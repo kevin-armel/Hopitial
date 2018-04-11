@@ -47,8 +47,8 @@ public class Fen_accueil extends JFrame{
         panelGeneral.add(btnEmploy);
         panelGeneral.add(btnRoom);
         panelGeneral.add(btnMalad);
-        panelGeneral.add(btnSearch);
         panelGeneral.add(btnServic);
+        panelGeneral.add(btnSearch);
         setContentPane(panelGeneral);
         setTitle("Accueil");
         setVisible(true);
