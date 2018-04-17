@@ -7,12 +7,12 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import static vue.Fen_accueil.btnBack;
 import static vue.Fen_accueil.posiFenetre;
 
 
 public class Fen_malade extends JFrame{
     
+    private final JButton btnBack = new JButton("Retour");
     private final JButton btnC_malad = new JButton("Création");
     private final JButton btnRUD_malad = new JButton("Read/update/delate");
     private final JButton btnRep_malad = new JButton("Reporting");
@@ -34,57 +34,28 @@ public class Fen_malade extends JFrame{
         panelGeneral.add(btnRep_malad);
         setContentPane(panelGeneral);
         setTitle("Malade");
-        setVisible(true);
-        pack();
         setLocationRelativeTo(null);
-        setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-        
-        //Connecter les actions liées aux boutons à la fenêtre, pour qu'elle puisse interpréter les évènements de ceux-ci
-        
-        btnC_malad.addActionListener(new ActionListener() {
-            /**
-            * 
-            * @param var_ae est un objet sur lequel java écoute, et cette methode sera appeler automatiquement, donc y mettre le code.
-            */
-            @Override
-            public void actionPerformed(ActionEvent ae) {
-                //
-                posiFenetre = 21;
-                //setVisible(false);
-                fenCmal = new FenC_malade();
-            }
-        });
-        
-        
-        btnRUD_malad.addActionListener(new ActionListener() {
-            /**
-            * 
-            * @param var_ae est un objet sur lequel java écoute, et cette methode sera appeler automatiquement, donc y mettre le code.
-            */
-            @Override
-            public void actionPerformed(ActionEvent ae) {
-                //
-                posiFenetre = 22;
-                //setVisible(false);
-                fenRUDmal = new FenRUD_malade();
-            }
-        });
-        
-        
-        btnRep_malad.addActionListener(new ActionListener() {
-            /**
-            * 
-            * @param var_ae est un objet sur lequel java écoute, et cette methode sera appeler automatiquement, donc y mettre le code.
-            */
-            @Override
-            public void actionPerformed(ActionEvent ae) {
-                //
-                posiFenetre = 23;
-                //setVisible(false);
-                fenRepmal = new FenRep_malade();
-            }
-        });
+        pack();
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
     }
+
+    public JButton getBtnBack() {
+        return btnBack;
+    }
+
+    public JButton getBtnC_malad() {
+        return btnC_malad;
+    }
+
+    public JButton getBtnRUD_malad() {
+        return btnRUD_malad;
+    }
+
+    public JButton getBtnRep_malad() {
+        return btnRep_malad;
+    }
+    
+    
 
 }

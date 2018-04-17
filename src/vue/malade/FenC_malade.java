@@ -16,10 +16,9 @@ import javax.swing.JPanel;
 import javax.swing.JSpinner;
 import javax.swing.JTextField;
 import javax.swing.SpinnerNumberModel;
-import static vue.Fen_accueil.btnBack;
 
 
-public class FenC_malade extends JFrame implements ActionListener{
+public class FenC_malade extends JFrame{
 
     //variables
     private final JSpinner num = new JSpinner(new SpinnerNumberModel(0, 0, 9999, 1)); //creation champ numero 
@@ -27,7 +26,11 @@ public class FenC_malade extends JFrame implements ActionListener{
     private final JSpinner no11 = new JSpinner(new SpinnerNumberModel(0, 0, 99, 1)); //creation champ numero telephone 
     private final JSpinner no22 = new JSpinner(new SpinnerNumberModel(0, 0, 99, 1)); //creation champ numero telephone 
     private final JSpinner no33 = new JSpinner(new SpinnerNumberModel(0, 0, 99, 1)); //creation champ numero telephone 
-    private final JSpinner no44 = new JSpinner(new SpinnerNumberModel(0, 0, 99, 1)); //creation champ numero telephone  
+    private final JSpinner no44 = new JSpinner(new SpinnerNumberModel(0, 0, 99, 1)); //creation champ numero telephone 
+    private final JSpinner age = new JSpinner(new SpinnerNumberModel(0, 0, 999, 1)); //creation champ age
+    private final JSpinner tail = new JSpinner(new SpinnerNumberModel(0, 0, 9.99, 0.01)); //creation champ taille
+    private final JSpinner poids = new JSpinner(new SpinnerNumberModel(0, 0, 999.99, 0.01)); //creation champ poids
+    private final JButton btnBack = new JButton("Retour"); //creation bouton retour
     private final JButton btnAide = new JButton("Aide"); ; //creation bouton aide
     private final JButton btnValider = new JButton("Valider");; //creation bouton valider
     private final JButton btnAnnuler = new JButton("Annuler"); //creation bouton annuler
@@ -35,6 +38,7 @@ public class FenC_malade extends JFrame implements ActionListener{
     private final JTextField pre = new JTextField(); //creation zone de texte 
     private final JTextField add = new JTextField(); //creation zone de texte 
     private final JTextField mut = new JTextField(); //creation zone de texte 
+    private final JTextField sex = new JTextField(); //creation zone de texte 
     
     /**
      * constructeur de la classe
@@ -74,7 +78,7 @@ public class FenC_malade extends JFrame implements ActionListener{
         gbc.gridx=1; 
         gbc.gridwidth=GridBagConstraints.REMAINDER;
         panelCentre.add(nom,gbc);
-        nom.setPreferredSize(new Dimension(100,30));
+        nom.setPreferredSize(new Dimension(100,20));
         //label et field prénom malade
         gbc.gridx=0; 
         gbc.gridy=2; 
@@ -84,7 +88,7 @@ public class FenC_malade extends JFrame implements ActionListener{
         gbc.gridx=1; 
         gbc.gridwidth=GridBagConstraints.REMAINDER;
         panelCentre.add(pre,gbc);
-        pre.setPreferredSize(new Dimension(100,30));
+        pre.setPreferredSize(new Dimension(100,20));
         //label et field addresse malade
         gbc.gridx=0; 
         gbc.gridy=3; 
@@ -94,17 +98,57 @@ public class FenC_malade extends JFrame implements ActionListener{
         gbc.gridx=1; 
         gbc.gridwidth=GridBagConstraints.REMAINDER;
         panelCentre.add(add,gbc);
-        add.setPreferredSize(new Dimension(100,30));
+        add.setPreferredSize(new Dimension(100,20));
         //label et field mutuelle du malade
         gbc.gridx=0; 
         gbc.gridy=4; 
         gbc.gridwidth=1; 
         gbc.gridheight=1; 
-        panelCentre.add(new JLabel("Nombre de lits : "),gbc); //
+        panelCentre.add(new JLabel("Mutuelle du malade : "),gbc); //
         gbc.gridx=1; 
         gbc.gridwidth=GridBagConstraints.REMAINDER;
         panelCentre.add(mut,gbc);
-        mut.setPreferredSize(new Dimension(100,30));
+        mut.setPreferredSize(new Dimension(100,20));
+        //label et field age du malade
+        gbc.gridx=0; 
+        gbc.gridy=5; 
+        gbc.gridwidth=1; 
+        gbc.gridheight=1; 
+        panelCentre.add(new JLabel("Age : "),gbc); //
+        gbc.gridx=1; 
+        gbc.gridwidth=GridBagConstraints.REMAINDER;
+        panelCentre.add(age,gbc);
+        age.setPreferredSize(new Dimension(100,20));
+        //label et field sexe du malade
+        gbc.gridx=0; 
+        gbc.gridy=6; 
+        gbc.gridwidth=1; 
+        gbc.gridheight=1; 
+        panelCentre.add(new JLabel("Sexe : "),gbc); //
+        gbc.gridx=1; 
+        gbc.gridwidth=GridBagConstraints.REMAINDER;
+        panelCentre.add(sex,gbc);
+        sex.setPreferredSize(new Dimension(100,20));
+        //label et field taille du malade
+        gbc.gridx=0; 
+        gbc.gridy=7; 
+        gbc.gridwidth=1; 
+        gbc.gridheight=1; 
+        panelCentre.add(new JLabel("Taille : "),gbc); //
+        gbc.gridx=1; 
+        gbc.gridwidth=GridBagConstraints.REMAINDER;
+        panelCentre.add(tail,gbc);
+        tail.setPreferredSize(new Dimension(100,20));
+        //label et field poids du malade
+        gbc.gridx=0; 
+        gbc.gridy=8; 
+        gbc.gridwidth=1; 
+        gbc.gridheight=1; 
+        panelCentre.add(new JLabel("Poids : "),gbc); //
+        gbc.gridx=1; 
+        gbc.gridwidth=GridBagConstraints.REMAINDER;
+        panelCentre.add(poids,gbc);
+        poids.setPreferredSize(new Dimension(100,20));
         //label et spinner numero de tel 
         gbc.gridx=0; 
         gbc.gridwidth=1; 
@@ -132,7 +176,7 @@ public class FenC_malade extends JFrame implements ActionListener{
         panelTel.add(no44,gbc);
         
         gbc.gridx=0; 
-        gbc.gridy=5; 
+        gbc.gridy=9; 
         gbc.gridwidth=1; 
         gbc.gridheight=1; 
         panelCentre.add(new JLabel("Numero de tel: "),gbc); //
@@ -149,38 +193,15 @@ public class FenC_malade extends JFrame implements ActionListener{
         panelGeneral.add(panelBas, BorderLayout.SOUTH); //ajout du panel bas au panel general
         
         
-        //bouton sur ecoute
-        btnAide.addActionListener(this); 
-        btnAnnuler.addActionListener(this);
-        btnValider.addActionListener(this);
-        
-        
         //methodes
         setContentPane(panelGeneral); //methode affichant l'ensemble du contenu affecte au panel general 
-        setTitle("Creation chambre"); //titre panel general 
-        setVisible(true); //panel general visible 
+        setTitle("Creation malade"); //titre panel general 
         pack();
         setLocationRelativeTo(null);
-        setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE); //fermeture juste de la fenetre en question 
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //fermeture juste de la fenetre en question 
         
     }
-    public void actionPerformed (ActionEvent e){
-        if(e.getSource() == btnAnnuler){
-            num.setValue(0);
-            no00.setValue(0);
-            no11.setValue(0);
-            no22.setValue(0);
-            no33.setValue(0);
-            no44.setValue(0);
-            nom.setText("");
-            pre.setText("");
-            add.setText("");
-            mut.setText("");
-        }
-        if(e.getSource() == btnAide){
-            JOptionPane.showMessageDialog(null, "Débrouille toi !", "Aide création malade", JOptionPane.PLAIN_MESSAGE);
-        }           
-    }
+    
     //getteurs des zones textes
     public JTextField getnom(){ 
         return nom;
@@ -191,9 +212,14 @@ public class FenC_malade extends JFrame implements ActionListener{
     public JTextField getadd(){
         return add;
     }
-    public JTextField getnmut(){
+    public JTextField getmut(){
         return mut;
+        
     }
+    public JTextField getsex(){
+        return sex;
+    }
+    
     //getteurs des zones valeurs
     public JSpinner getnum(){ 
         return num;
@@ -212,6 +238,14 @@ public class FenC_malade extends JFrame implements ActionListener{
     }
     public JSpinner getno44(){
         return no44;
+    }public JSpinner gettail(){
+        return tail;
+    }
+    public JSpinner getpoids(){
+        return poids;
+    }
+    public JSpinner getage(){
+        return age;
     }
     
     

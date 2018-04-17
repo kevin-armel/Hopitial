@@ -15,7 +15,6 @@ import javax.swing.JPanel;
 import javax.swing.JSpinner;
 import javax.swing.JTextField;
 import javax.swing.SpinnerNumberModel;
-import static vue.Fen_accueil.btnBack;
 
 
 public class FenC_chambre extends JFrame implements ActionListener{
@@ -24,6 +23,7 @@ public class FenC_chambre extends JFrame implements ActionListener{
     private final JSpinner noCh = new JSpinner(new SpinnerNumberModel(0, 0, 9999, 1));
     private final JSpinner noSur = new JSpinner(new SpinnerNumberModel(0, 0, 9999, 1));
     private final JSpinner noLit = new JSpinner(new SpinnerNumberModel(0, 0, 9999, 1));
+    private final JButton btnBack = new JButton("Retour"); //creation bouton retour
     private final JButton btnAide = new JButton("Aide"); ; //creation bouton aide
     private final JButton btnValider = new JButton("Valider");; //creation bouton valider
     private final JButton btnAnnuler = new JButton("Annuler"); //creation bouton annuler
@@ -93,11 +93,10 @@ public class FenC_chambre extends JFrame implements ActionListener{
         
         //methodes
         setContentPane(panelGeneral); //methode affichant l'ensemble du contenu affecte au panel general 
-        setTitle("Creation chambre"); //titre panel general 
-        setVisible(true); //panel general visible 
+        setTitle("Creation chambre"); //titre panel general
         pack();
         setLocationRelativeTo(null);
-        setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE); //fermeture juste de la fenetre en question 
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //fermeture juste de la fenetre en question 
   
     }
     public void actionPerformed (ActionEvent e){

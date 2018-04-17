@@ -2,17 +2,14 @@
 package vue.employe;
 
 import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import static vue.Fen_accueil.btnBack;
-import static vue.Fen_accueil.posiFenetre;
 
 
 public class Fen_employe extends JFrame{
     
+    private final JButton btnBack = new JButton("Retour");
     private final JButton btnC_employ = new JButton("Création");
     private final JButton btnRUD_employ = new JButton("Read/update/delate");
     private final JButton btnRep_employ = new JButton("Reporting");
@@ -33,57 +30,27 @@ public class Fen_employe extends JFrame{
         panelGeneral.add(btnRep_employ);
         setContentPane(panelGeneral);
         setTitle("employe");
-        setVisible(true);
-        pack();
         setLocationRelativeTo(null);
-        setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-        
-        
-        //Connecter les actions liées aux boutons à la fenêtre, pour qu'elle puisse interpréter les évènements de ceux-ci
-        
-        btnC_employ.addActionListener(new ActionListener() {
-            /**
-            * 
-            * @param var_ae est un objet sur lequel java écoute, et cette methode sera appeler automatiquement, donc y mettre le code.
-            */
-            @Override
-            public void actionPerformed(ActionEvent ae) {
-                posiFenetre = 11;
-                //setVisible(false);
-                fenCemp = new FenC_employe();
-            }
-        });
-        
-        
-        btnRUD_employ.addActionListener(new ActionListener() {
-            /**
-            * 
-            * @param var_ae est un objet sur lequel java écoute, et cette methode sera appeler automatiquement, donc y mettre le code.
-            */
-            @Override
-            public void actionPerformed(ActionEvent ae) {
-                //
-                posiFenetre = 12;
-                //setVisible(false);
-                fenRUDemp = new FenRUD_employe();
-            }
-        });
-        
-        
-        btnRep_employ.addActionListener(new ActionListener() {
-            /**
-            * 
-            * @param var_ae est un objet sur lequel java écoute, et cette methode sera appeler automatiquement, donc y mettre le code.
-            */
-            @Override
-            public void actionPerformed(ActionEvent ae) {
-                //
-                posiFenetre = 13;
-                //setVisible(false);
-                fenRepEmp = new FenRep_employe();
-            }
-        });
-        
+        pack();
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    
     }
-        
+    
+    
+     public JButton getBtnBack() {
+        return btnBack;
+    }
+
+    public JButton getBtnC_employ() {
+        return btnC_employ;
+    }
+
+    public JButton getBtnRUD_employ() {
+        return btnRUD_employ;
+    }
+
+    public JButton getBtnRep_employ() {
+        return btnRep_employ;
+    }
+    
 }

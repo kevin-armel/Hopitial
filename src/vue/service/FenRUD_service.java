@@ -5,11 +5,12 @@ import java.awt.GridLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import static vue.Fen_accueil.btnBack;
+
 
 
 public class FenRUD_service extends JFrame{
-        
+    
+    private final JButton btnBack = new JButton("Retour");
     /**
      * constructeur de la classe
      */
@@ -20,8 +21,7 @@ public class FenRUD_service extends JFrame{
         setContentPane(panelGeneral);
         setTitle("RUD service");
         setVisible(true);
-        pack();
-        setLocationRelativeTo(null);
+        setBounds(200, 200, 200, 250);
         setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         
         
