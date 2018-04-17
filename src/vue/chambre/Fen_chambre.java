@@ -34,7 +34,8 @@ public class Fen_chambre extends JFrame{
         setContentPane(panelGeneral);
         setTitle("chambre");
         setVisible(true);
-        setBounds(200, 200, 400, 250);
+        pack();
+        setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
         

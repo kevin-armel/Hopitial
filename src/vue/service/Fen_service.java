@@ -36,7 +36,8 @@ public class Fen_service extends JFrame{
         setContentPane(panelGeneral);
         setTitle("Service");
         setVisible(true);
-        setBounds(200, 200, 400, 250);
+        pack();
+        setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         
         //Connecter les actions liées aux boutons à la fenêtre, pour qu'elle puisse interpréter les évènements de ceux-ci

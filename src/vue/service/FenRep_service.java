@@ -19,7 +19,8 @@ public class FenRep_service extends JFrame{
         setContentPane(panelGeneral);
         setTitle("Reporting service");
         setVisible(true);
-        setBounds(200, 200, 200, 250);
+        pack();
+        setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         
         

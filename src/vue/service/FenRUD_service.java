@@ -20,7 +20,8 @@ public class FenRUD_service extends JFrame{
         setContentPane(panelGeneral);
         setTitle("RUD service");
         setVisible(true);
-        setBounds(200, 200, 200, 250);
+        pack();
+        setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         
         

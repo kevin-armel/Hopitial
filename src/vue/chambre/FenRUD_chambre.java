@@ -20,7 +20,8 @@ public class FenRUD_chambre extends JFrame{
         setContentPane(panelGeneral);
         setTitle("RUD chambre");
         setVisible(true);
-        setBounds(200, 200, 200, 250);
+        pack();
+        setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         
         

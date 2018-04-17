@@ -20,7 +20,8 @@ public class FenRep_malade extends JFrame{
         setContentPane(panelGeneral);
         setTitle("Reporting malade");
         setVisible(true);
-        setBounds(200, 200, 200, 250);
+        pack();
+        setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         
         

@@ -34,7 +34,8 @@ public class Fen_employe extends JFrame{
         setContentPane(panelGeneral);
         setTitle("employe");
         setVisible(true);
-        setBounds(200, 200, 400, 250);
+        pack();
+        setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         
         
