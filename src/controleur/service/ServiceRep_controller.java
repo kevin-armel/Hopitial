@@ -7,7 +7,7 @@ import model.Service;
 import vue.service.FenRep_service;
 
 
-public class ServiceRep_controller implements ActionListener{
+public class ServiceRep_controller implements ActionListener, ServiceRep_Interface {
 
     private Service modelService = new Service();
     private final FenRep_service fenRep_service = new FenRep_service();

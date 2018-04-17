@@ -13,7 +13,7 @@ import vue.employe.Fen_employe;
 
 
 
-public class EmployerController implements ActionListener, MouseListener{
+public class EmployerController implements ActionListener, MouseListener, EmployeInterface {
     
     private Employe modelEmploye = new Employe();
     private final Fen_employe fen_employe = new Fen_employe();
