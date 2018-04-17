@@ -9,7 +9,7 @@ import model.Employe;
 import vue.employe.FenRUD_employe;
 
 
-public class EmployeRUD_controller implements ActionListener, MouseListener{
+public class EmployeRUD_controller implements ActionListener, MouseListener, EmployeRUD_Interface {
 
     private Employe modelEmploye = new Employe();
     private final FenRUD_employe fenRUD_employe = new FenRUD_employe();
@@ -24,8 +24,8 @@ public class EmployeRUD_controller implements ActionListener, MouseListener{
     }
     
     
-    
-    private void desactiveModif(){
+    @Override
+    public void desactiveModif(){
         fenRUD_employe.getFieldNom().setEnabled(false);
         fenRUD_employe.getFieldPrenom().setEnabled(false);
         fenRUD_employe.getFieldAdresse().setEnabled(false);
@@ -37,7 +37,8 @@ public class EmployeRUD_controller implements ActionListener, MouseListener{
         fenRUD_employe.getBtnUpdate().setEnabled(false);
     }
     
-    private void activeModif(){
+    @Override
+    public void activeModif(){
         fenRUD_employe.getFieldNom().setEnabled(true);
         fenRUD_employe.getFieldPrenom().setEnabled(true);
         fenRUD_employe.getFieldAdresse().setEnabled(true);
@@ -49,6 +50,7 @@ public class EmployeRUD_controller implements ActionListener, MouseListener{
         fenRUD_employe.getBtnUpdate().setEnabled(true);
     }
     
+    @Override
     public void remplirFormModif(int posi){
         try {
             for(int i=0; i<modelEmploye.getModelDataTable().getRowCount(); i++){

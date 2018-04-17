@@ -95,7 +95,4 @@ public class Fen_search extends JDialog{
         });
         
     }
-    
-    
-    
 }

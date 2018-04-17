@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 import model.Service;
 import vue.service.FenRUD_service;
 
-public class ServiceRUD_controller implements ActionListener{
+public class ServiceRUD_controller implements ActionListener, ServiceRUD_Interface {
     
     private Service modelService = new Service();
     private final FenRUD_service fenRUD_service = new FenRUD_service();

@@ -24,7 +24,7 @@ import vue.malade.Fen_malade;
 import vue.service.Fen_service;
 
 
-public class AccueilController implements ActionListener{
+public class AccueilController implements ActionListener, AccueilInterface {
     public static Boolean isConnected = false;
     private final Fen_accueil fen_accueil = new Fen_accueil();
     private final Fen_connexion fen_connexion = new Fen_connexion();

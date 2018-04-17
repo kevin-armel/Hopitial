@@ -7,7 +7,7 @@ import model.Malade;
 import vue.malade.FenRep_malade;
 
 
-public class MaladeRep_controller implements ActionListener{
+public class MaladeRep_controller implements ActionListener, MaladeRep_Interface{
     
     private Malade modelMalade = new Malade();
     private final FenRep_malade fenRep_malade = new FenRep_malade();

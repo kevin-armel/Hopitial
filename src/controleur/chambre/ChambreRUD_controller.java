@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 import model.Chambre;
 import vue.chambre.FenC_chambre;
 
-public class ChambreRUD_controller implements ActionListener{
+public class ChambreRUD_controller implements ActionListener, ChambreRUD_Interface{
     
     
     private Chambre modelChambre = new Chambre();

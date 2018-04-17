@@ -20,9 +20,9 @@ public class FenRUD_service extends JFrame{
         panelGeneral.add(new JButton("Vous changer Ce contenu ci."));
         setContentPane(panelGeneral);
         setTitle("RUD service");
-        setVisible(true);
-        setBounds(200, 200, 200, 250);
-        setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+        setLocationRelativeTo(null);
+        pack();
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
         
     }

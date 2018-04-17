@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 import model.Recherche;
 
 
-public class SearchController implements ActionListener{
+public class SearchController implements ActionListener, SearchInterface {
 
     private Recherche rechercheModel;
     
