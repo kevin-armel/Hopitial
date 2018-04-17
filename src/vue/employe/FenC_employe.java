@@ -1,15 +1,25 @@
 
 package vue.employe;
 
+
 import java.awt.BorderLayout;
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
-import static vue.Fen_accueil.btnBack;
+import java.awt.Dimension;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.GridLayout;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JSpinner;
+import javax.swing.JTextField;
+import javax.swing.SpinnerNumberModel;
 
 
-public class FenC_employe extends JFrame implements ActionListener {
+public class FenC_employe extends JFrame {
     
+    private final JButton btnBack = new JButton("Retour");
     private final JButton btnAide = new JButton("Aide");
     private final JButton btnAnnuler = new JButton("Annuler");
     private final JButton btnValider = new JButton("Valider"); //Création des Bouttons
@@ -182,72 +192,12 @@ public class FenC_employe extends JFrame implements ActionListener {
          
         setContentPane(panelGeneral);
         setTitle("Creation employe");
-        setVisible(true);
         pack();
         setLocationRelativeTo(null);
-        setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-        
-        btnAnnuler.addActionListener(this);
-        btnAide.addActionListener(this);
-        
-        
-    choixEmploye.addActionListener(new ActionListener() {
- 
-    @Override
-    public void actionPerformed(ActionEvent event) {
-        JComboBox<String> combo = (JComboBox<String>) event.getSource();
-        String selecte = (String) combo.getSelectedItem();
- 
-        if (selecte.equals("Docteur")) {
-                labSpecialite.setVisible(true);
-                specialite.setVisible(true);
-                labRotation.setVisible(false);
-                rotation.setVisible(false);
-                labSalaire.setVisible(false);
-                salaire.setVisible(false);
-        }
-        else if(selecte.equals("Infirmier")){
-                labRotation.setVisible(true);
-                rotation.setVisible(true);
-                labSalaire.setVisible(true);
-                salaire.setVisible(true);
-                labSpecialite.setVisible(false);
-                specialite.setVisible(false);
-        }
-        else if(selecte.equals("Employe")){
-                labSpecialite.setVisible(false);
-                specialite.setVisible(false);
-                labRotation.setVisible(false);  
-                rotation.setVisible(false);
-                labSalaire.setVisible(false);
-                salaire.setVisible(false);
-        }
-          
-        }
-           
-});
-    
-           
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                         
     }
-    
-    public void actionPerformed(ActionEvent e){
-        if(e.getSource() == btnAnnuler){
-            nom.setText("");
-            prenom.setText("");
-            adresse.setText("");
-            specialite.setText("");
-            salaire.setValue(0);
-            no1.setValue(0);
-            no2.setValue(0);
-            no3.setValue(0);
-            no4.setValue(0);
-            no5.setValue(0);
-        }
-        if(e.getSource() == btnAide){
-            JOptionPane.showMessageDialog(null, "Débrouille toi !", "Aide création employe", JOptionPane.PLAIN_MESSAGE);
-        }
-    }
-    
+        
     
    // Getter des textfield
     
@@ -274,23 +224,23 @@ public class FenC_employe extends JFrame implements ActionListener {
         return salaire;
     }
     
-    public JSpinner no1(){
+    public JSpinner getno1(){
         return no1;
     }
     
-    public JSpinner no2(){
+    public JSpinner getno2(){
         return no2;
     }
 
-    public JSpinner no3(){
+    public JSpinner getno3(){
         return no3;
     }
 
-    public JSpinner no4(){
+    public JSpinner getno4(){
         return no4;
     }    
     
-    public JSpinner no5(){
+    public JSpinner getno5(){
         return no5;
     }
     
@@ -321,6 +271,19 @@ public class FenC_employe extends JFrame implements ActionListener {
     }
     
     
+    //Getter des Jlabel
+    
+    public JLabel getlabSpecialite(){
+        return labSpecialite;
+    }
+    
+    public JLabel getlabRotation(){
+        return labRotation;
+    }
+    
+    public JLabel getlabSalaire(){
+        return labSalaire;
+    }
     
     
   }    

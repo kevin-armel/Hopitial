@@ -5,11 +5,12 @@ import java.awt.GridLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import static vue.Fen_accueil.btnBack;
+
 
 
 public class FenRep_malade extends JFrame{
-        
+    
+    private final JButton btnBack = new JButton("Retour");
     /**
      * constructeur de la classe
      */
@@ -19,10 +20,9 @@ public class FenRep_malade extends JFrame{
         panelGeneral.add(new JButton("Vous changer Ce contenu ci."));
         setContentPane(panelGeneral);
         setTitle("Reporting malade");
-        setVisible(true);
-        setBounds(200, 200, 200, 250);
-        setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-        
+        pack();
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
     }
         

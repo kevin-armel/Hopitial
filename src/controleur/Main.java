@@ -2,10 +2,11 @@
 package controleur;
 import java.util.ArrayList;
 import java.util.Iterator;
+import model.Accueil;
 import model.Connexion;
+import model.Employe;
 import model.SSHTunnel;
 import vue.Fen_accueil;
-import vue.employe.FenC_employe;
 
 public class Main {
     public static Fen_accueil fenetre;
@@ -15,17 +16,20 @@ public class Main {
     public static void main(String[] args) {
         
         
-        fenetre = new Fen_accueil();
-                
         
+        //fenetre = new Fen_accueil();
+        Accueil ma = new Accueil();
+        AccueilController ac = new AccueilController(ma);
+        /*Employe me = new Employe();
+        EmployerController ec = new EmployerController(me);
         //Test de connexion a la base de donnees
-        try {
+        /*try {
             Connexion connex = new Connexion("hopital", "root", "");
             ArrayList<String> liste = new ArrayList<String>();
             //insertion dans la base de donnée
             /* Cette requette ne marche pas, c'est juste pour vous aider à comprendre comment fonctionne la fonction du prof
             connex.ajouterRequeteMaj("INSERT INTO table(les_elements_de_la_table) values(les_valeurs_a_inserer);");
-            */
+            /
             //exemple pour montrer une selection
             liste = connex.remplirChampsRequete("SELECT * FROM employe;");
             Iterator itemListe = liste.iterator();
@@ -35,7 +39,7 @@ public class Main {
             connex.deconectBDD();
         } catch (Exception e) {
             e.getMessage();
-        }
+        }*/
         
     }
     

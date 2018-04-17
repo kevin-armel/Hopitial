@@ -1,17 +1,15 @@
 
 package vue.service;
 
-
 import java.awt.BorderLayout;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
-import static vue.Fen_accueil.btnBack;
 
 
-public class FenC_service extends JFrame implements ActionListener {
+public class FenC_service extends JFrame {
     
-    
+    private final JButton btnBack = new JButton("Retour");
     private final JButton btnAide = new JButton("Aide");
     private final JButton btnAnnuler = new JButton("Annuler");
     private final JButton btnValider = new JButton("Valider"); //Création des Bouttons
@@ -87,30 +85,13 @@ public class FenC_service extends JFrame implements ActionListener {
         
         setContentPane(panelGeneral);
         setTitle("Creation service");
-        setVisible(true);
         pack();
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         
-        btnAnnuler.addActionListener(this);
-        btnAide.addActionListener(this);
-        
-        
     }
     
-    public void actionPerformed(ActionEvent e){
-        if(e.getSource() == btnAnnuler){
-            code.setText("");
-            nom.setText("");
-            batiment.setText("");
-            directeur.setValue(0);
-        }
-        if(e.getSource() == btnAide){
-            JOptionPane.showMessageDialog(null, "Débrouille toi !", "Aide création service ", JOptionPane.PLAIN_MESSAGE);
-        }
-    }
-    
-    
+
     //Getter des Jtextfield
     
     public JTextField getcode(){
@@ -135,15 +116,15 @@ public class FenC_service extends JFrame implements ActionListener {
     
     //Getter des JButton
     
-    public JButton btnAide(){
+    public JButton getbtnAide(){
         return btnAide;
     }
     
-    public JButton btnAnnuler(){
+    public JButton getbtnAnnuler(){
         return btnAnnuler;
     }
     
-    public JButton btnValider(){
+    public JButton getbtnValider(){
         return btnValider;
     }
     
