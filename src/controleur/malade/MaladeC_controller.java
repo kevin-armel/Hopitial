@@ -33,26 +33,31 @@ public class MaladeC_controller implements ActionListener, MaladeC_Interface{
             JOptionPane.showMessageDialog(null, "Débrouille toi !", "Aide création malade", JOptionPane.PLAIN_MESSAGE);
         }
         if(ae.getSource() == fenC_malade.getbtnValider()){
-            JOptionPane.showMessageDialog(null, "Bouton Validé Ok !", "Aide création malade", JOptionPane.PLAIN_MESSAGE);
+            if(isnotEmpty() == true){
+            //JOptionPane.showMessageDialog(null, "Bouton Validé Ok !", "Aide création malade", JOptionPane.PLAIN_MESSAGE);
+            }
         }
     }
     
     @Override
     public void viderChamps(){
-        fenC_malade.getnum().setValue(0);
-            fenC_malade.getno00().setValue(0);
-            fenC_malade.getno11().setValue(0);
-            fenC_malade.getno22().setValue(0);
-            fenC_malade.getno33().setValue(0);
-            fenC_malade.getno44().setValue(0);
-            fenC_malade.gettail().setValue(0);
-            fenC_malade.getpoids().setValue(0);
-            fenC_malade.getage().setValue(0);
-            fenC_malade.getsex().setText("");
-            fenC_malade.getnom().setText("");
-            fenC_malade.getpre().setText("");
-            fenC_malade.getadd().setText("");
-            fenC_malade.getmut().setText("");
+        fenC_malade.gettail().setValue(0);
+        fenC_malade.getpoids().setValue(0);
+        fenC_malade.getage().setValue(0);
+        fenC_malade.getnom().setText("");
+        fenC_malade.getpre().setText("");
+        fenC_malade.getadd().setText("");
+        fenC_malade.getmut().setText("");
+        fenC_malade.gettelC_m().setText("");
+        //fenC_malade.getop1().setAction();
+        //fenC_malade.getop2().setAction();
     }
     
+    @Override
+    public boolean isnotEmpty() {
+        if((fenC_malade.getage().getValue()!=null) && (fenC_malade.getpoids().getValue()!=null) && (fenC_malade.gettail().getValue()!=null) && (fenC_malade.gettelC_m().getText()!=("")) && (fenC_malade.getmut().getText()!=("")) && (fenC_malade.getnom().getText()!=("")) && (fenC_malade.getadd().getText()!=(""))){
+        return true;
+        } else
+        return false;
+    }
 }
