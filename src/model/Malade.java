@@ -8,6 +8,7 @@ import static model.Accueil.connex;
 
 
 public class Malade extends Abstract_Personne{
+
     
     public DefaultTableModel getModelDataTable(){
         DefaultTableModel modelData = new DefaultTableModel();
@@ -40,5 +41,4 @@ public class Malade extends Abstract_Personne{
         
         return modelData;
     }
-    
 }

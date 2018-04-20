@@ -27,19 +27,19 @@ public class MaladeC_controller implements ActionListener, MaladeC_Interface{
     @Override
     public void viderChamps(){
         fenC_malade.getnum().setValue(0);
-            fenC_malade.getno00().setValue(0);
-            fenC_malade.getno11().setValue(0);
-            fenC_malade.getno22().setValue(0);
-            fenC_malade.getno33().setValue(0);
-            fenC_malade.getno44().setValue(0);
-            fenC_malade.getSpinTaille().setValue(0);
-            fenC_malade.getSpinPoids().setValue(0);
-            fenC_malade.getSpinAge().setValue(0);
-            fenC_malade.getComboSexe().setSelectedIndex(0);
-            fenC_malade.getFieldNom().setText("");
-            fenC_malade.getFieldPrenom().setText("");
-            fenC_malade.getFieldAddresse().setText("");
-            fenC_malade.getComboMutuelle().setSelectedIndex(0);
+        fenC_malade.getno00().setValue(0);
+        fenC_malade.getno11().setValue(0);
+        fenC_malade.getno22().setValue(0);
+        fenC_malade.getno33().setValue(0);
+        fenC_malade.getno44().setValue(0);
+        fenC_malade.getSpinTaille().setValue(0);
+        fenC_malade.getSpinPoids().setValue(0);
+        fenC_malade.getSpinAge().setValue(0);
+        fenC_malade.getComboSexe().setSelectedIndex(0);
+        fenC_malade.getFieldNom().setText("");
+        fenC_malade.getFieldPrenom().setText("");
+        fenC_malade.getFieldAddresse().setText("");
+        fenC_malade.getComboMutuelle().setSelectedIndex(0);
     }
     
     
@@ -58,6 +58,14 @@ public class MaladeC_controller implements ActionListener, MaladeC_Interface{
         if(ae.getSource() == fenC_malade.getBtnValider()){
             JOptionPane.showMessageDialog(null, "Bouton Validé Ok !", "Aide création malade", JOptionPane.PLAIN_MESSAGE);
         }
+
     }
     
+    @Override
+    public boolean isnotEmpty() {
+        if((fenC_malade.getSpinAge().getValue()!=null) && (fenC_malade.getSpinPoids().getValue()!=null) && (fenC_malade.getSpinTaille().getValue()!=null) && (fenC_malade.getFieldTel().getText()!=("")) && ((String)fenC_malade.getComboMutuelle().getSelectedItem()!=("")) && (fenC_malade.getFieldNom().getText()!=("")) && (fenC_malade.getFieldAddresse().getText()!=(""))){
+        return true;
+        } else
+        return false;
+    }
 }

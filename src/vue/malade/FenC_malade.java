@@ -1,6 +1,7 @@
 
 package vue.malade;
 
+import javax.swing.JRadioButton;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
@@ -13,7 +14,6 @@ import javax.swing.JPanel;
 import javax.swing.JSpinner;
 import javax.swing.JTextField;
 import javax.swing.SpinnerNumberModel;
-
 
 public class FenC_malade extends JFrame{
 
@@ -34,6 +34,7 @@ public class FenC_malade extends JFrame{
     private final JTextField fieldNom = new JTextField(); //creation zone de texte 
     private final JTextField fieldPrenom = new JTextField(); //creation zone de texte 
     private final JTextField fieldAddresse = new JTextField(); //creation zone de texte 
+    private final JTextField fieldTel = new JTextField(); //creation zone de texte
     private final JComboBox comboMutuelle = new JComboBox(); //creation zone de texte 
     private final JComboBox comboSexe = new JComboBox(); //creation zone de texte 
     
@@ -54,8 +55,7 @@ public class FenC_malade extends JFrame{
         panelHaut.add(btnBack,BorderLayout.WEST); //ajout bouton retour au panel du haut
         panelHaut.add(btnAide,BorderLayout.EAST); //ajout bouton aide au panel du haut          
         panelGeneral.add(panelHaut, BorderLayout.NORTH); //ajout du panel haut au panel general
-        
-        
+       
         //panel centre
         //label et spinner numero malade
         gbc.gridx=0; //initialisation du positionnement en x
@@ -267,4 +267,9 @@ public class FenC_malade extends JFrame{
         return comboSexe;
     }
 
+    public JTextField getFieldTel() {
+        return fieldTel;
+    }
+
+    
 }
