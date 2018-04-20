@@ -18,24 +18,29 @@ public class ServiceC_controller implements ActionListener, ServiceC_Interface {
         fenC_service.setVisible(true);
         fenC_service.repaint();
         
-        fenC_service.getbtnAnnuler().addActionListener(this);
-        fenC_service.getbtnAide().addActionListener(this);
-        fenC_service.getbtnValider().addActionListener(this);
+        fenC_service.getBtnBack().addActionListener(this);
+        fenC_service.getBtnAnnuler().addActionListener(this);
+        fenC_service.getBtnAide().addActionListener(this);
+        fenC_service.getBtnValider().addActionListener(this);
         
     }
 
     @Override
-    public void actionPerformed(ActionEvent e) {
-        if(e.getSource() == fenC_service.getbtnAnnuler()){
-            fenC_service.getcode().setText("");
-            fenC_service.getnom().setText("");
-            fenC_service.getbatiment().setText("");
+    public void actionPerformed(ActionEvent ae) {
+        if(ae.getSource().equals(fenC_service.getBtnBack())){
+            fenC_service.dispose();
+            ServiceController sc = new ServiceController(modelService);
+        }
+        else if(ae.getSource() == fenC_service.getBtnAnnuler()){
+            fenC_service.getFieldCode().setText("");
+            fenC_service.getFieldNom().setText("");
+            fenC_service.getComboBatiment().setSelectedItem(0);
             fenC_service.getdirecteur().setValue(0);
         }
-        if(e.getSource() == fenC_service.getbtnAide()){
+        else if(ae.getSource() == fenC_service.getBtnAide()){
             JOptionPane.showMessageDialog(null, "Débrouille toi !", "Aide création service ", JOptionPane.PLAIN_MESSAGE);
         }
-        if(e.getSource() == fenC_service.getbtnValider()){
+        else if(ae.getSource() == fenC_service.getBtnValider()){
             JOptionPane.showMessageDialog(null, "valider !", "valider ", JOptionPane.PLAIN_MESSAGE);
         }
         

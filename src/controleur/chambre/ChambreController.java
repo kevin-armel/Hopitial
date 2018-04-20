@@ -1,8 +1,10 @@
 
 package controleur.chambre;
 
+import controleur.AccueilController;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import model.Accueil;
 import model.Chambre;
 import vue.Fen_accueil;
 import vue.chambre.FenC_chambre;
@@ -32,11 +34,11 @@ public class ChambreController implements ActionListener{
     
     @Override
     public void actionPerformed(ActionEvent ae) {
-        System.out.println("Service");
+        System.out.println("Chambre");
         if(ae.getSource() == fen_chambre.getBtnBack()){
-            fen_chambre.setVisible(false);
-            fen_accueil.setVisible(true);
-            fen_accueil.repaint();
+            fen_chambre.dispose();
+            Accueil a = new Accueil();
+            AccueilController ac = new AccueilController(a, false);
         }else if(ae.getSource() == fen_chambre.getBtnC_chambre()){
             fen_chambre.setVisible(false);
             ChambreC_controller eCc = new ChambreC_controller(modelChambre);

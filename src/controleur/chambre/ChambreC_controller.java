@@ -16,30 +16,31 @@ public class ChambreC_controller implements ActionListener, ChambreC_Interface{
         fenC_chambre.repaint();
         fenC_chambre.setVisible(true);
         
-        fenC_chambre.getbtnAnnuler().addActionListener(this);
-        fenC_chambre.getbtnAide().addActionListener(this);
-        fenC_chambre.getbtnValider().addActionListener(this);
+        fenC_chambre.getBtnBack().addActionListener(this);
+        fenC_chambre.getBtnAnnuler().addActionListener(this);
+        fenC_chambre.getBtnAide().addActionListener(this);
+        fenC_chambre.getBtnValider().addActionListener(this);
     
         
     }
 
     @Override
     public void actionPerformed(ActionEvent ae) {
-        if(ae.getSource() == fenC_chambre.getbtnAnnuler()){
+        if(ae.getSource().equals(fenC_chambre.getBtnBack())){
+            fenC_chambre.dispose();
+            ChambreController ac = new ChambreController(modelChambre);
+        }
+        else if(ae.getSource().equals(fenC_chambre.getBtnAnnuler())){
             fenC_chambre.getnoCh().setValue(0);
             fenC_chambre.getnoSur().setValue(0);
             fenC_chambre.getnoLit().setValue(0);
         }
-        if(ae.getSource() == fenC_chambre.getbtnAide()){
+        else if(ae.getSource().equals(fenC_chambre.getBtnAide())){
             JOptionPane.showMessageDialog(null, "Débrouille toi !", "Aide création chambre", JOptionPane.PLAIN_MESSAGE);
         }
-        if(ae.getSource() == fenC_chambre.getbtnValider()){
+        else if(ae.getSource().equals(fenC_chambre.getBtnValider())){
             
-            
-            
-            
-            
-            //JOptionPane.showMessageDialog(null, "Bouton Validé Ok !", "Aide création chambre", JOptionPane.PLAIN_MESSAGE);
+      //JOptionPane.showMessageDialog(null, "Bouton Validé Ok !", "Aide création chambre", JOptionPane.PLAIN_MESSAGE);
         }
         
     }

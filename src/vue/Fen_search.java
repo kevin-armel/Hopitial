@@ -4,19 +4,12 @@ package vue;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
-import java.awt.GridBagLayout;
-import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.JSeparator;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 
@@ -64,35 +57,45 @@ public class Fen_search extends JDialog{
         setContentPane(panelGeneral);
         setTitle("Recherche");
         pack();
+        repaint();
+        //setModal(true);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JDialog.HIDE_ON_CLOSE);
-        
-        //Connecter les actions liées aux boutons à la fenêtre, pour qu'elle puisse interpréter les évènements de ceux-ci
-        
-        btnAide.addActionListener(new ActionListener() {
-            /**
-            * 
-            * @param var_ae est un objet sur lequel java écoute, et cette methode sera appeler automatiquement, donc y mettre le code.
-            */
-            @Override
-            public void actionPerformed(ActionEvent ae) {
-                JOptionPane.showMessageDialog(null, "Pour effectuer une recherche, vous devez entrer l'expression recherchée. "
-                        + "\nEt par la suite, si vous connaissez où effectuer votre requête, \nvous sélectionnez dirrectement l'environnement de recherche, "
-                        + "mais si vous ne connaissez \npas dans quel classe appartient votre expression, sélectionnez toutes les cases.", "Aide de recherche", JOptionPane.PLAIN_MESSAGE);
-            }
-        });
-        
-        
-        btnRecherche.addActionListener(new ActionListener() {
-            /**
-            * 
-            * @param var_ae est un objet sur lequel java écoute, et cette methode sera appeler automatiquement, donc y mettre le code.
-            */
-            @Override
-            public void actionPerformed(ActionEvent ae) {
-                //
-            }
-        });
-        
+           
     }
+
+    public JButton getBtnAide() {
+        return btnAide;
+    }
+
+    public JButton getBtnRecherche() {
+        return btnRecherche;
+    }
+
+    public JTextField getFieldRecherche() {
+        return fieldRecherche;
+    }
+
+    public JCheckBox getCheckEmploy() {
+        return checkEmploy;
+    }
+
+    public JCheckBox getCheckChambre() {
+        return checkChambre;
+    }
+
+    public JCheckBox getCheckMalade() {
+        return checkMalade;
+    }
+
+    public JCheckBox getCheckService() {
+        return checkService;
+    }
+
+    public JTable getTableResultat() {
+        return tableResultat;
+    }
+    
+    
+    
 }

@@ -24,5 +24,9 @@ public class FenRep_employe extends JFrame{
         
         
     }
+
+    public JButton getBtnBack() {
+        return btnBack;
+    }
         
 }

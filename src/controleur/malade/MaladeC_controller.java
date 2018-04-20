@@ -18,25 +18,12 @@ public class MaladeC_controller implements ActionListener, MaladeC_Interface{
         fenC_malade.repaint();
         fenC_malade.setVisible(true);
         
-        fenC_malade.getbtnAnnuler().addActionListener(this);
-        fenC_malade.getbtnAide().addActionListener(this);
-        fenC_malade.getbtnValider().addActionListener(this);
-        
+        fenC_malade.getBtnBack().addActionListener(this);
+        fenC_malade.getBtnAnnuler().addActionListener(this);
+        fenC_malade.getBtnAide().addActionListener(this);
+        fenC_malade.getBtnValider().addActionListener(this);
     }
 
-    @Override
-    public void actionPerformed(ActionEvent ae) {
-        if(ae.getSource() == fenC_malade.getbtnAnnuler()){
-            viderChamps();
-        }
-        if(ae.getSource() == fenC_malade.getbtnAide()){
-            JOptionPane.showMessageDialog(null, "Débrouille toi !", "Aide création malade", JOptionPane.PLAIN_MESSAGE);
-        }
-        if(ae.getSource() == fenC_malade.getbtnValider()){
-            JOptionPane.showMessageDialog(null, "Bouton Validé Ok !", "Aide création malade", JOptionPane.PLAIN_MESSAGE);
-        }
-    }
-    
     @Override
     public void viderChamps(){
         fenC_malade.getnum().setValue(0);
@@ -45,14 +32,32 @@ public class MaladeC_controller implements ActionListener, MaladeC_Interface{
             fenC_malade.getno22().setValue(0);
             fenC_malade.getno33().setValue(0);
             fenC_malade.getno44().setValue(0);
-            fenC_malade.gettail().setValue(0);
-            fenC_malade.getpoids().setValue(0);
-            fenC_malade.getage().setValue(0);
-            fenC_malade.getsex().setText("");
-            fenC_malade.getnom().setText("");
-            fenC_malade.getpre().setText("");
-            fenC_malade.getadd().setText("");
-            fenC_malade.getmut().setText("");
+            fenC_malade.getSpinTaille().setValue(0);
+            fenC_malade.getSpinPoids().setValue(0);
+            fenC_malade.getSpinAge().setValue(0);
+            fenC_malade.getComboSexe().setSelectedIndex(0);
+            fenC_malade.getFieldNom().setText("");
+            fenC_malade.getFieldPrenom().setText("");
+            fenC_malade.getFieldAddresse().setText("");
+            fenC_malade.getComboMutuelle().setSelectedIndex(0);
+    }
+    
+    
+    @Override
+    public void actionPerformed(ActionEvent ae) {
+        if(ae.getSource().equals(fenC_malade.getBtnBack())){
+            fenC_malade.dispose();
+            MaladeController mc = new MaladeController(modelMalade);
+        }
+        else if(ae.getSource() == fenC_malade.getBtnAnnuler()){
+            viderChamps();
+        }
+        if(ae.getSource() == fenC_malade.getBtnAide()){
+            JOptionPane.showMessageDialog(null, "Débrouille toi !", "Aide création malade", JOptionPane.PLAIN_MESSAGE);
+        }
+        if(ae.getSource() == fenC_malade.getBtnValider()){
+            JOptionPane.showMessageDialog(null, "Bouton Validé Ok !", "Aide création malade", JOptionPane.PLAIN_MESSAGE);
+        }
     }
     
 }

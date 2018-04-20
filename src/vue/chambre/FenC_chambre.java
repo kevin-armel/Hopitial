@@ -41,7 +41,7 @@ public class FenC_chambre extends JFrame implements ActionListener{
         
         
         //panel haut
-        panelGeneral.add(btnBack);
+
         panelHaut.add(btnBack,BorderLayout.WEST); //ajout bouton retour au panel du haut
         panelHaut.add(btnAide,BorderLayout.EAST); //ajout bouton aide au panel du haut          
         panelGeneral.add(panelHaut, BorderLayout.NORTH); //ajout du panel haut au panel general
@@ -122,13 +122,21 @@ public class FenC_chambre extends JFrame implements ActionListener{
     }
     
     //getteurs des boutons 
-    public JButton getbtnAide(){
+
+    public JButton getBtnBack() {
+        return btnBack;
+    }
+
+    public JButton getBtnAide() {
         return btnAide;
     }
-    public JButton getbtnAnnuler(){
-        return btnAnnuler;
-    }
-    public JButton getbtnValider(){
+
+    public JButton getBtnValider() {
         return btnValider;
     }
+
+    public JButton getBtnAnnuler() {
+        return btnAnnuler;
+    }
+    
 }

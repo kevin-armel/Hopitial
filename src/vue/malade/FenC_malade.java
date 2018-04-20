@@ -5,13 +5,10 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JSpinner;
 import javax.swing.JTextField;
@@ -27,18 +24,18 @@ public class FenC_malade extends JFrame{
     private final JSpinner no22 = new JSpinner(new SpinnerNumberModel(0, 0, 99, 1)); //creation champ numero telephone 
     private final JSpinner no33 = new JSpinner(new SpinnerNumberModel(0, 0, 99, 1)); //creation champ numero telephone 
     private final JSpinner no44 = new JSpinner(new SpinnerNumberModel(0, 0, 99, 1)); //creation champ numero telephone 
-    private final JSpinner age = new JSpinner(new SpinnerNumberModel(0, 0, 999, 1)); //creation champ age
-    private final JSpinner tail = new JSpinner(new SpinnerNumberModel(0, 0, 9.99, 0.01)); //creation champ taille
-    private final JSpinner poids = new JSpinner(new SpinnerNumberModel(0, 0, 999.99, 0.01)); //creation champ poids
+    private final JSpinner spinAge = new JSpinner(new SpinnerNumberModel(0, 0, 999, 1)); //creation champ age
+    private final JSpinner spinTaille = new JSpinner(new SpinnerNumberModel(0, 0, 9.99, 0.01)); //creation champ taille
+    private final JSpinner spinPoids = new JSpinner(new SpinnerNumberModel(0, 0, 999.99, 0.01)); //creation champ poids
     private final JButton btnBack = new JButton("Retour"); //creation bouton retour
     private final JButton btnAide = new JButton("Aide"); ; //creation bouton aide
     private final JButton btnValider = new JButton("Valider");; //creation bouton valider
     private final JButton btnAnnuler = new JButton("Annuler"); //creation bouton annuler
-    private final JTextField nom = new JTextField(); //creation zone de texte 
-    private final JTextField pre = new JTextField(); //creation zone de texte 
-    private final JTextField add = new JTextField(); //creation zone de texte 
-    private final JTextField mut = new JTextField(); //creation zone de texte 
-    private final JTextField sex = new JTextField(); //creation zone de texte 
+    private final JTextField fieldNom = new JTextField(); //creation zone de texte 
+    private final JTextField fieldPrenom = new JTextField(); //creation zone de texte 
+    private final JTextField fieldAddresse = new JTextField(); //creation zone de texte 
+    private final JComboBox comboMutuelle = new JComboBox(); //creation zone de texte 
+    private final JComboBox comboSexe = new JComboBox(); //creation zone de texte 
     
     /**
      * constructeur de la classe
@@ -77,8 +74,8 @@ public class FenC_malade extends JFrame{
         panelCentre.add(new JLabel("Nom malade : "),gbc); //
         gbc.gridx=1; 
         gbc.gridwidth=GridBagConstraints.REMAINDER;
-        panelCentre.add(nom,gbc);
-        nom.setPreferredSize(new Dimension(100,20));
+        panelCentre.add(fieldNom,gbc);
+        fieldNom.setPreferredSize(new Dimension(100,20));
         //label et field prénom malade
         gbc.gridx=0; 
         gbc.gridy=2; 
@@ -87,8 +84,8 @@ public class FenC_malade extends JFrame{
         panelCentre.add(new JLabel("Prénom malade : "),gbc); //
         gbc.gridx=1; 
         gbc.gridwidth=GridBagConstraints.REMAINDER;
-        panelCentre.add(pre,gbc);
-        pre.setPreferredSize(new Dimension(100,20));
+        panelCentre.add(fieldPrenom,gbc);
+        fieldPrenom.setPreferredSize(new Dimension(100,20));
         //label et field addresse malade
         gbc.gridx=0; 
         gbc.gridy=3; 
@@ -97,8 +94,8 @@ public class FenC_malade extends JFrame{
         panelCentre.add(new JLabel("Adresse du malade : "),gbc); //
         gbc.gridx=1; 
         gbc.gridwidth=GridBagConstraints.REMAINDER;
-        panelCentre.add(add,gbc);
-        add.setPreferredSize(new Dimension(100,20));
+        panelCentre.add(fieldAddresse,gbc);
+        fieldAddresse.setPreferredSize(new Dimension(100,20));
         //label et field mutuelle du malade
         gbc.gridx=0; 
         gbc.gridy=4; 
@@ -107,8 +104,8 @@ public class FenC_malade extends JFrame{
         panelCentre.add(new JLabel("Mutuelle du malade : "),gbc); //
         gbc.gridx=1; 
         gbc.gridwidth=GridBagConstraints.REMAINDER;
-        panelCentre.add(mut,gbc);
-        mut.setPreferredSize(new Dimension(100,20));
+        panelCentre.add(comboMutuelle,gbc);
+        comboMutuelle.setPreferredSize(new Dimension(100,20));
         //label et field age du malade
         gbc.gridx=0; 
         gbc.gridy=5; 
@@ -117,8 +114,8 @@ public class FenC_malade extends JFrame{
         panelCentre.add(new JLabel("Age : "),gbc); //
         gbc.gridx=1; 
         gbc.gridwidth=GridBagConstraints.REMAINDER;
-        panelCentre.add(age,gbc);
-        age.setPreferredSize(new Dimension(100,20));
+        panelCentre.add(spinAge,gbc);
+        spinAge.setPreferredSize(new Dimension(100,20));
         //label et field sexe du malade
         gbc.gridx=0; 
         gbc.gridy=6; 
@@ -127,8 +124,8 @@ public class FenC_malade extends JFrame{
         panelCentre.add(new JLabel("Sexe : "),gbc); //
         gbc.gridx=1; 
         gbc.gridwidth=GridBagConstraints.REMAINDER;
-        panelCentre.add(sex,gbc);
-        sex.setPreferredSize(new Dimension(100,20));
+        panelCentre.add(comboSexe,gbc);
+        comboSexe.setPreferredSize(new Dimension(100,20));
         //label et field taille du malade
         gbc.gridx=0; 
         gbc.gridy=7; 
@@ -137,8 +134,8 @@ public class FenC_malade extends JFrame{
         panelCentre.add(new JLabel("Taille : "),gbc); //
         gbc.gridx=1; 
         gbc.gridwidth=GridBagConstraints.REMAINDER;
-        panelCentre.add(tail,gbc);
-        tail.setPreferredSize(new Dimension(100,20));
+        panelCentre.add(spinTaille,gbc);
+        spinTaille.setPreferredSize(new Dimension(100,20));
         //label et field poids du malade
         gbc.gridx=0; 
         gbc.gridy=8; 
@@ -147,8 +144,8 @@ public class FenC_malade extends JFrame{
         panelCentre.add(new JLabel("Poids : "),gbc); //
         gbc.gridx=1; 
         gbc.gridwidth=GridBagConstraints.REMAINDER;
-        panelCentre.add(poids,gbc);
-        poids.setPreferredSize(new Dimension(100,20));
+        panelCentre.add(spinPoids,gbc);
+        spinPoids.setPreferredSize(new Dimension(100,20));
         //label et spinner numero de tel 
         gbc.gridx=0; 
         gbc.gridwidth=1; 
@@ -202,24 +199,6 @@ public class FenC_malade extends JFrame{
         
     }
     
-    //getteurs des zones textes
-    public JTextField getnom(){ 
-        return nom;
-    }
-    public JTextField getpre(){
-        return pre;
-    }
-    public JTextField getadd(){
-        return add;
-    }
-    public JTextField getmut(){
-        return mut;
-        
-    }
-    public JTextField getsex(){
-        return sex;
-    }
-    
     //getteurs des zones valeurs
     public JSpinner getnum(){ 
         return num;
@@ -238,25 +217,54 @@ public class FenC_malade extends JFrame{
     }
     public JSpinner getno44(){
         return no44;
-    }public JSpinner gettail(){
-        return tail;
     }
-    public JSpinner getpoids(){
-        return poids;
+
+    public JSpinner getSpinAge() {
+        return spinAge;
     }
-    public JSpinner getage(){
-        return age;
+
+    public JSpinner getSpinTaille() {
+        return spinTaille;
     }
-    
-    
-    //getteurs des boutons 
-    public JButton getbtnAide(){
+
+    public JSpinner getSpinPoids() {
+        return spinPoids;
+    }
+
+    public JButton getBtnBack() {
+        return btnBack;
+    }
+
+    public JButton getBtnAide() {
         return btnAide;
     }
-    public JButton getbtnAnnuler(){
-        return btnAnnuler;
-    }
-    public JButton getbtnValider(){
+
+    public JButton getBtnValider() {
         return btnValider;
     }
+
+    public JButton getBtnAnnuler() {
+        return btnAnnuler;
+    }
+
+    public JTextField getFieldNom() {
+        return fieldNom;
+    }
+
+    public JTextField getFieldPrenom() {
+        return fieldPrenom;
+    }
+
+    public JTextField getFieldAddresse() {
+        return fieldAddresse;
+    }
+
+    public JComboBox getComboMutuelle() {
+        return comboMutuelle;
+    }
+
+    public JComboBox getComboSexe() {
+        return comboSexe;
+    }
+
 }

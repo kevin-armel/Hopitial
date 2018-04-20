@@ -15,13 +15,17 @@ public class MaladeRep_controller implements ActionListener, MaladeRep_Interface
     public MaladeRep_controller(Malade m) {
         this.modelMalade = m;
         
+        fenRep_malade.getBtnBack().addActionListener(this);
         fenRep_malade.setVisible(true);
         fenRep_malade.repaint();
     }
 
     @Override
     public void actionPerformed(ActionEvent ae) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if(ae.getSource().equals(fenRep_malade.getBtnBack())){
+            fenRep_malade.dispose();
+            MaladeController mc = new MaladeController(modelMalade);
+        }
     }
     
     

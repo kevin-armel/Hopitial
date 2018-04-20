@@ -1,8 +1,10 @@
 
 package controleur.malade;
 
+import controleur.AccueilController;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import model.Accueil;
 import model.Malade;
 import vue.Fen_accueil;
 import vue.malade.FenC_malade;
@@ -35,9 +37,9 @@ public class MaladeController implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent ae) {
         if(ae.getSource() == fen_malade.getBtnBack()){
-            fen_malade.setVisible(false);
-            fen_accueil.setVisible(true);
-            fen_accueil.repaint();
+            fen_malade.dispose();
+            Accueil a = new Accueil();
+            AccueilController ac = new AccueilController(a, false);
         }else if(ae.getSource() == fen_malade.getBtnC_malad()){
             fen_malade.setVisible(false);
             MaladeC_controller mCc = new MaladeC_controller(modelMalade);

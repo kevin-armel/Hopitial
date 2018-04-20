@@ -14,9 +14,9 @@ public class FenC_service extends JFrame {
     private final JButton btnAnnuler = new JButton("Annuler");
     private final JButton btnValider = new JButton("Valider"); //Création des Bouttons
     
-    private final JTextField code = new JTextField();
-    private final JTextField nom = new JTextField();
-    private final JTextField batiment = new JTextField();
+    private final JTextField fieldCode = new JTextField();
+    private final JTextField fieldNom = new JTextField();
+    private final JComboBox ComboBatiment = new JComboBox();
     
     private final JSpinner directeur = new JSpinner(new SpinnerNumberModel(0, 0, 99, 1));
         
@@ -47,8 +47,8 @@ public class FenC_service extends JFrame {
         panelCentre.add(new JLabel("Code: "), gbc);
         gbc.gridx=1;
         gbc.gridwidth=GridBagConstraints.REMAINDER;
-        code.setPreferredSize(new Dimension(100,30));
-        panelCentre.add(code, gbc); // Ligne 1 du pannel central
+        fieldCode.setPreferredSize(new Dimension(100,30));
+        panelCentre.add(fieldCode, gbc); // Ligne 1 du pannel central
         
         gbc.gridx=0;
         gbc.gridy=1;
@@ -57,8 +57,8 @@ public class FenC_service extends JFrame {
         panelCentre.add(new JLabel("Nom: "), gbc);
         gbc.gridx=1;
         gbc.gridwidth=GridBagConstraints.REMAINDER;
-        nom.setPreferredSize(new Dimension(100,30));
-        panelCentre.add(nom, gbc); //Ligne 2 du pannel centrale
+        fieldNom.setPreferredSize(new Dimension(100,30));
+        panelCentre.add(fieldNom, gbc); //Ligne 2 du pannel centrale
         
         gbc.gridx=0;
         gbc.gridy=2;
@@ -67,8 +67,8 @@ public class FenC_service extends JFrame {
         panelCentre.add(new JLabel("Batiment: "), gbc);
         gbc.gridx=1;
         gbc.gridwidth=GridBagConstraints.REMAINDER;
-        batiment.setPreferredSize(new Dimension(100,30));
-        panelCentre.add(batiment, gbc); //Ligne 3 du pannel centrale
+        ComboBatiment.setPreferredSize(new Dimension(100,30));
+        panelCentre.add(ComboBatiment, gbc); //Ligne 3 du pannel centrale
         
         gbc.gridx=0;
         gbc.gridy=3;
@@ -90,43 +90,42 @@ public class FenC_service extends JFrame {
         setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         
     }
-    
 
-    //Getter des Jtextfield
-    
-    public JTextField getcode(){
-        return code;
-    }
-    
-    public JTextField getnom(){
-        return nom;
-    }
-    
-    public JTextField getbatiment(){
-        return batiment;
-    }
-    
     
     //getter des Jspinner
     
     public JSpinner getdirecteur(){
         return directeur;
     }
-    
-    
-    //Getter des JButton
-    
-    public JButton getbtnAide(){
+
+    public JButton getBtnBack() {
+        return btnBack;
+    }
+
+    public JButton getBtnAide() {
         return btnAide;
     }
-    
-    public JButton getbtnAnnuler(){
+
+    public JButton getBtnAnnuler() {
         return btnAnnuler;
     }
-    
-    public JButton getbtnValider(){
+
+    public JButton getBtnValider() {
         return btnValider;
     }
+
+    public JTextField getFieldCode() {
+        return fieldCode;
+    }
+
+    public JTextField getFieldNom() {
+        return fieldNom;
+    }
+
+    public JComboBox getComboBatiment() {
+        return ComboBatiment;
+    }
+
     
-        
+    
 }

@@ -24,5 +24,9 @@ public class FenRep_chambre extends JFrame{
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);;
         
     }
+
+    public JButton getBtnBack() {
+        return btnBack;
+    }
         
 }

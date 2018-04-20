@@ -1,8 +1,10 @@
 
 package controleur.service;
 
+import controleur.AccueilController;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import model.Accueil;
 import model.Service;
 import vue.Fen_accueil;
 import vue.service.FenC_service;
@@ -37,9 +39,9 @@ public class ServiceController implements ActionListener, ServiceInterface {
     public void actionPerformed(ActionEvent ae) {
         System.out.println("Service");
         if(ae.getSource() == fen_service.getBtnBack()){
-            fen_service.setVisible(false);
-            fen_accueil.setVisible(true);
-            fen_accueil.repaint();
+            fen_service.dispose();
+            Accueil a = new Accueil();
+            AccueilController ac = new AccueilController(a, false);
         }else if(ae.getSource() == fen_service.getBtnC_servic()){
             fen_service.setVisible(false);
             ServiceC_controller eCc = new ServiceC_controller(modelService);

@@ -25,5 +25,9 @@ public class FenRep_service extends JFrame{
         
         
     }
+
+    public JButton getBtnBack() {
+        return btnBack;
+    }
         
 }

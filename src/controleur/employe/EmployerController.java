@@ -1,9 +1,11 @@
 
 package controleur.employe;
 
+import controleur.AccueilController;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseListener;
+import model.Accueil;
 import model.Employe;
 import vue.Fen_accueil;
 import vue.employe.FenC_employe;
@@ -17,11 +19,7 @@ public class EmployerController implements ActionListener, MouseListener, Employ
     
     private Employe modelEmploye = new Employe();
     private final Fen_employe fen_employe = new Fen_employe();
-    private final FenC_employe fenC_employe = new FenC_employe();
-    private final FenRUD_employe fenRUD_employe = new FenRUD_employe();
-    private final FenRep_employe fenRep_employe = new FenRep_employe();
-    private final Fen_accueil fen_accueil = new Fen_accueil();
-    //private JButton
+
     
     public EmployerController(Employe e){
         this.modelEmploye = e;
@@ -39,17 +37,17 @@ public class EmployerController implements ActionListener, MouseListener, Employ
     public void actionPerformed(ActionEvent ae) {
         System.out.println("employe");
         if(ae.getSource() == fen_employe.getBtnBack()){
-            fen_employe.setVisible(false);
-            fen_accueil.setVisible(true);
-            fen_accueil.repaint();
+            fen_employe.dispose();
+            Accueil a = new Accueil();
+            AccueilController ac = new AccueilController(a, false);
         }else if(ae.getSource() == fen_employe.getBtnC_employ()){
-            fen_employe.setVisible(false);
+            fen_employe.dispose();
             EmployeC_controller eCc = new EmployeC_controller(modelEmploye);
         }else if(ae.getSource() == fen_employe.getBtnRUD_employ()){
-            fen_employe.setVisible(false);
+            fen_employe.dispose();
             EmployeRUD_controller eRUDc = new EmployeRUD_controller(modelEmploye);
         }else if(ae.getSource() == fen_employe.getBtnRep_employ()){
-            fen_employe.setVisible(false);
+            fen_employe.dispose();
             EmployeRep_controller eRepc = new EmployeRep_controller(modelEmploye);
         }
         

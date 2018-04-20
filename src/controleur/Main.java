@@ -19,7 +19,7 @@ public class Main {
         
         //fenetre = new Fen_accueil();
         Accueil ma = new Accueil();
-        AccueilController ac = new AccueilController(ma);
+        AccueilController ac = new AccueilController(ma, true);
         /*Employe me = new Employe();
         EmployerController ec = new EmployerController(me);
         //Test de connexion a la base de donnees

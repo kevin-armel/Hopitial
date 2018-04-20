@@ -25,5 +25,9 @@ public class FenRep_malade extends JFrame{
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
     }
+
+    public JButton getBtnBack() {
+        return btnBack;
+    }
         
 }

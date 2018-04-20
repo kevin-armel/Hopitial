@@ -18,18 +18,22 @@ public class EmployeC_controller implements ActionListener, EmployeC_Interface {
         fenC_employe.repaint();
         fenC_employe.setVisible(true);
         
+        fenC_employe.getBtnBack().addActionListener(this);
         fenC_employe.getbtnAnnuler().addActionListener(this);
         fenC_employe.getbtnAide().addActionListener(this);
         fenC_employe.getbtnValider().addActionListener(this);
-        fenC_employe.getchoixEmploye().addActionListener(this);
+        fenC_employe.getComboTypeEmploye().addActionListener(this);
         
         
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        
-        if(e.getSource().equals(fenC_employe.getchoixEmploye())){
+        if(e.getSource().equals(fenC_employe.getBtnBack())){
+            fenC_employe.dispose();
+            EmployerController ac = new EmployerController(modelEmploye);
+        }
+        else if(e.getSource().equals(fenC_employe.getComboTypeEmploye())){
             JComboBox<String> combo = (JComboBox<String>) e.getSource();
             String selecte = (String) combo.getSelectedItem();
             if (selecte.equals("Docteur")) {
@@ -52,40 +56,40 @@ public class EmployeC_controller implements ActionListener, EmployeC_Interface {
     @Override
     public void afficheChampsDoc(){
         fenC_employe.getlabSpecialite().setVisible(true);
-        fenC_employe.getspecialite().setVisible(true);
+        fenC_employe.getFieldSpecia().setVisible(true);
         fenC_employe.getlabRotation().setVisible(false);
-        fenC_employe.getrotation().setVisible(false);
+        fenC_employe.getComboRotation().setVisible(false);
         fenC_employe.getlabSalaire().setVisible(false);
-        fenC_employe.getsalaire().setVisible(false);
+        fenC_employe.getSpinSalaire().setVisible(false);
     }
     
     @Override
     public void afficheChampsInf(){
         fenC_employe.getlabRotation().setVisible(true);
-        fenC_employe.getrotation().setVisible(true);
+        fenC_employe.getComboRotation().setVisible(true);
         fenC_employe.getlabSalaire().setVisible(true);
-        fenC_employe.getsalaire().setVisible(true);
+        fenC_employe.getSpinSalaire().setVisible(true);
         fenC_employe.getlabSpecialite().setVisible(false);
-        fenC_employe.getspecialite().setVisible(false);       
+        fenC_employe.getFieldSpecia().setVisible(false);       
     }
     
     @Override
     public void afficheChampsEmp(){
         fenC_employe.getlabSpecialite().setVisible(false);
-        fenC_employe.getspecialite().setVisible(false);
+        fenC_employe.getFieldSpecia().setVisible(false);
         fenC_employe.getlabRotation().setVisible(false);  
-        fenC_employe.getrotation().setVisible(false);
+        fenC_employe.getComboRotation().setVisible(false);
         fenC_employe.getlabSalaire().setVisible(false);
-        fenC_employe.getsalaire().setVisible(false);
+        fenC_employe.getSpinSalaire().setVisible(false);
     }
     
     @Override
     public void viderChamps(){
-        fenC_employe.getnom().setText("");
-        fenC_employe.getprenom().setText("");
-        fenC_employe.getadresse().setText("");
-        fenC_employe.getspecialite().setText("");
-        fenC_employe.getsalaire().setValue(0);
+        fenC_employe.getFieldNom().setText("");
+        fenC_employe.getFieldPrenom().setText("");
+        fenC_employe.getFieldAdresse().setText("");
+        fenC_employe.getFieldSpecia().setText("");
+        fenC_employe.getSpinSalaire().setValue(0);
         fenC_employe.getno1().setValue(0);
         fenC_employe.getno2().setValue(0);
         fenC_employe.getno3().setValue(0);

@@ -54,6 +54,7 @@ public class Connexion {
 
         //création d'une connexion JDBC à la base 
         conn = DriverManager.getConnection(urlDatabase, loginDatabase, passwordDatabase);
+        System.out.println("ok");
         // création d'un ordre SQL (statement)
         stmt = conn.createStatement();
     }
@@ -182,7 +183,7 @@ public class Connexion {
 
             // Concatener les champs de la ligne separes par ,
             for (int i = 1; i < nbColonne; i++) {
-                champs = champs + "," + rset.getString(i + 1);
+                champs = champs + "___" + rset.getString(i + 1);
             }
 
             // ajouter un "\n" à la ligne des champs
@@ -214,4 +215,46 @@ public class Connexion {
         }
         
     }
+
+    public Statement getStmt() {
+        return stmt;
+    }
+
+    public void setStmt(Statement stmt) {
+        this.stmt = stmt;
+    }
+
+    public ResultSet getRset() {
+        return rset;
+    }
+
+    public void setRset(ResultSet rset) {
+        this.rset = rset;
+    }
+
+    public ResultSetMetaData getRsetMeta() {
+        return rsetMeta;
+    }
+
+    public void setRsetMeta(ResultSetMetaData rsetMeta) {
+        this.rsetMeta = rsetMeta;
+    }
+
+    public ArrayList<String> getRequetes() {
+        return requetes;
+    }
+
+    public void setRequetes(ArrayList<String> requetes) {
+        this.requetes = requetes;
+    }
+
+    public ArrayList<String> getRequetesMaj() {
+        return requetesMaj;
+    }
+
+    public void setRequetesMaj(ArrayList<String> requetesMaj) {
+        this.requetesMaj = requetesMaj;
+    }
+    
+    
 }

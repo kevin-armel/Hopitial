@@ -15,13 +15,18 @@ public class ServiceRep_controller implements ActionListener, ServiceRep_Interfa
     public ServiceRep_controller(Service s) {
         this.modelService = s;
         
+        
+        fenRep_service.getBtnBack().addActionListener(this);
         fenRep_service.setVisible(true);
         fenRep_service.repaint();
     }
 
     @Override
     public void actionPerformed(ActionEvent ae) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if(ae.getSource().equals(fenRep_service.getBtnBack())){
+            fenRep_service.dispose();
+            ServiceController sc = new ServiceController(modelService);
+        }
     }
     
     

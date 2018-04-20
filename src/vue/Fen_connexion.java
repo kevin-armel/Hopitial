@@ -9,6 +9,7 @@ import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 
@@ -17,16 +18,16 @@ public class Fen_connexion extends JFrame{
     private final JButton btnConnexion = new JButton("Connexion");
     private final JButton btnAnnuler = new JButton("Annuler");
     private final JTextField fieldLogin = new JTextField();
-    private final JTextField fieldPass = new JTextField();
+    private final JPasswordField fieldPass = new JPasswordField();
     private final JTextField fieldBDD = new JTextField("hopital");
-    private final JTextField fieldBDDPass = new JTextField();
-    private final JCheckBox checkOption = new JCheckBox("Plus d'option");
+    private final JPasswordField fieldBDDPass = new JPasswordField();
+    private final JCheckBox checkOption = new JCheckBox("Cocher pour Plus d'option d'authentification");
     private final JCheckBox checkDistant = new JCheckBox("Cocher pour se connecter sur le serveur distant");
     private final JLabel labelIcon = new JLabel("Ici l'Icone");
     private final JLabel labelTextHaut = new JLabel("Ici texte en haut");
     private final JLabel labelNom = new JLabel("Nom utilisateur: ");
     private final JLabel labelPass = new JLabel("Mots de passe: ");
-    private final JLabel labelBDD = new JLabel("Nom de la base de donées");
+    private final JLabel labelBDD = new JLabel("Nom de la base de donées: ");
     private final JLabel labelBDDPass = new JLabel("Mots de passe accès distant:");
     
     
@@ -142,7 +143,7 @@ public class Fen_connexion extends JFrame{
         return fieldLogin;
     }
 
-    public JTextField getFieldPass() {
+    public JPasswordField getFieldPass() {
         return fieldPass;
     }
 
@@ -150,7 +151,7 @@ public class Fen_connexion extends JFrame{
         return fieldBDD;
     }
 
-    public JTextField getFieldBDDPass() {
+    public JPasswordField getFieldBDDPass() {
         return fieldBDDPass;
     }
 
@@ -166,7 +167,7 @@ public class Fen_connexion extends JFrame{
         return labelIcon;
     }
 
-    public JLabel getLabelH() {
+    public JLabel getLabelTextHaut() {
         return labelTextHaut;
     }
 
