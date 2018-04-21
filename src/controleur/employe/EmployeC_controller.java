@@ -15,8 +15,13 @@ public class EmployeC_controller implements ActionListener, EmployeC_Interface {
 
     public EmployeC_controller(Employe e) {
         this.modelEmploye = e;
-        fenC_employe.repaint();
-        fenC_employe.setVisible(true);
+        
+        fenC_employe.getComboSexe().setModel(e.getModelSexe());
+        fenC_employe.getCombodSpecia().setModel(e.getModelSpecialite());
+        fenC_employe.getComboRotation().setModel(e.getModelRotationInf());
+        fenC_employe.getComboCodeServ().setModel(e.getModelCodeServ());
+        noAction(true);
+        afficheChampsEmp();
         
         fenC_employe.getBtnBack().addActionListener(this);
         fenC_employe.getbtnAnnuler().addActionListener(this);
@@ -24,7 +29,8 @@ public class EmployeC_controller implements ActionListener, EmployeC_Interface {
         fenC_employe.getbtnValider().addActionListener(this);
         fenC_employe.getComboTypeEmploye().addActionListener(this);
         
-        
+        fenC_employe.setVisible(true);
+        fenC_employe.repaint();
     }
 
     @Override
@@ -37,15 +43,21 @@ public class EmployeC_controller implements ActionListener, EmployeC_Interface {
             JComboBox<String> combo = (JComboBox<String>) e.getSource();
             String selecte = (String) combo.getSelectedItem();
             if (selecte.equals("Docteur")) {
+                noAction(false);
                 afficheChampsDoc();
             }else if(selecte.equals("Infirmier")){
+                noAction(false);
                 afficheChampsInf();
-            }else if(selecte.equals("Employe")){
+            }else if(selecte.equals("")){
                 afficheChampsEmp();
+                noAction(true);
             }
+            fenC_employe.repaint();
+            fenC_employe.pack();
         }
          if(e.getSource() == fenC_employe.getbtnAnnuler()){
             viderChamps();
+            fenC_employe.repaint();
         }else if(e.getSource() == fenC_employe.getbtnAide()){  
             JOptionPane.showMessageDialog(null, "Débrouille toi !", "Aide création service ", JOptionPane.PLAIN_MESSAGE);
         }else if(e.getSource() == fenC_employe.getbtnValider()){
@@ -54,13 +66,39 @@ public class EmployeC_controller implements ActionListener, EmployeC_Interface {
     }
     
     @Override
+    public void noAction(boolean disable){
+        if(disable){
+            fenC_employe.getBtnValider().setEnabled(false);
+            fenC_employe.getFieldNom().setEnabled(false);
+            fenC_employe.getFieldPrenom().setEnabled(false);
+            fenC_employe.getCombodSpecia().setEnabled(false);
+            fenC_employe.getFieldTel().setEnabled(false);
+            fenC_employe.getFieldAdresse().setEnabled(false);
+            fenC_employe.getComboSexe().setEnabled(false);
+            fenC_employe.getFieldEmail().setEnabled(false);
+        }else{
+            fenC_employe.getBtnValider().setEnabled(true);
+            fenC_employe.getFieldNom().setEnabled(true);
+            fenC_employe.getFieldPrenom().setEnabled(true);
+            fenC_employe.getCombodSpecia().setEnabled(true);
+            fenC_employe.getFieldTel().setEnabled(true);
+            fenC_employe.getFieldAdresse().setEnabled(true);
+            fenC_employe.getComboSexe().setEnabled(true);
+            fenC_employe.getFieldEmail().setEnabled(true);
+        }
+    }
+    
+    @Override
     public void afficheChampsDoc(){
         fenC_employe.getlabSpecialite().setVisible(true);
-        fenC_employe.getFieldSpecia().setVisible(true);
+        fenC_employe.getCombodSpecia().setVisible(true);
         fenC_employe.getlabRotation().setVisible(false);
         fenC_employe.getComboRotation().setVisible(false);
         fenC_employe.getlabSalaire().setVisible(false);
         fenC_employe.getSpinSalaire().setVisible(false);
+        fenC_employe.getLabCodeServ().setVisible(false);
+        fenC_employe.getComboCodeServ().setVisible(false);
+        
     }
     
     @Override
@@ -70,17 +108,21 @@ public class EmployeC_controller implements ActionListener, EmployeC_Interface {
         fenC_employe.getlabSalaire().setVisible(true);
         fenC_employe.getSpinSalaire().setVisible(true);
         fenC_employe.getlabSpecialite().setVisible(false);
-        fenC_employe.getFieldSpecia().setVisible(false);       
+        fenC_employe.getCombodSpecia().setVisible(false);   
+        fenC_employe.getLabCodeServ().setVisible(true);
+        fenC_employe.getComboCodeServ().setVisible(true);
     }
     
-    @Override
+
     public void afficheChampsEmp(){
         fenC_employe.getlabSpecialite().setVisible(false);
-        fenC_employe.getFieldSpecia().setVisible(false);
+        fenC_employe.getCombodSpecia().setVisible(false);
         fenC_employe.getlabRotation().setVisible(false);  
         fenC_employe.getComboRotation().setVisible(false);
         fenC_employe.getlabSalaire().setVisible(false);
         fenC_employe.getSpinSalaire().setVisible(false);
+        fenC_employe.getLabCodeServ().setVisible(false);
+        fenC_employe.getComboCodeServ().setVisible(false);
     }
     
     @Override
@@ -88,13 +130,9 @@ public class EmployeC_controller implements ActionListener, EmployeC_Interface {
         fenC_employe.getFieldNom().setText("");
         fenC_employe.getFieldPrenom().setText("");
         fenC_employe.getFieldAdresse().setText("");
-        fenC_employe.getFieldSpecia().setText("");
+        fenC_employe.getCombodSpecia().setSelectedItem(0);
         fenC_employe.getSpinSalaire().setValue(0);
-        fenC_employe.getno1().setValue(0);
-        fenC_employe.getno2().setValue(0);
-        fenC_employe.getno3().setValue(0);
-        fenC_employe.getno4().setValue(0);
-        fenC_employe.getno5().setValue(0);        
+        fenC_employe.getFieldTel().setText("");
     }
     
 }

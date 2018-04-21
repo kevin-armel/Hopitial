@@ -7,7 +7,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
-import javax.naming.directory.SearchControls;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.event.ListSelectionEvent;
@@ -53,6 +52,8 @@ public class EmployeRUD_controller implements ActionListener, ListSelectionListe
         fenRUD_employe.getSpinSalaire().setVisible(false);
         fenRUD_employe.getLabIRotaion().setVisible(false);
         fenRUD_employe.getLabISalair().setVisible(false);
+        fenRUD_employe.getLabICodeSer().setVisible(false);
+        fenRUD_employe.getFieldCodeS().setVisible(false);
         fenRUD_employe.getComboInfRot().setVisible(false);
         fenRUD_employe.getLabDSpecialite().setVisible(false);
         fenRUD_employe.getComboDSpecialite().setVisible(false);
@@ -177,15 +178,16 @@ public class EmployeRUD_controller implements ActionListener, ListSelectionListe
         }
         else if(ae.getSource().equals(fenRUD_employe.getBtnModifier())){
             int i = fenRUD_employe.getTableDonnees().getSelectedRow();
-            //System.out.println(Integer.parseInt(fenRUD_employe.getTableDonnees().getValueAt(i, 0).toString()));
-            if(modelEmploye.isDocteur(Integer.parseInt(fenRUD_employe.getTableDonnees().getValueAt(i, 0).toString()))){
-                showChampsDoc();
-                remplirFormModif(i, true);
-            }else{
-                showChampsInf();
-                remplirFormModif(i,false);
+            if(i>=0){
+                if(modelEmploye.isDocteur(Integer.parseInt(fenRUD_employe.getTableDonnees().getValueAt(i, 0).toString()))){
+                    showChampsDoc();
+                    remplirFormModif(i, true);
+                }else{
+                    showChampsInf();
+                    remplirFormModif(i,false);
+                }
+                fenRUD_employe.repaint();
             }
-            fenRUD_employe.repaint();
         }
         else if(ae.getSource().equals(fenRUD_employe.getBtnUpdate())){
             if(fenRUD_employe.getCheckOnModif().isSelected()){

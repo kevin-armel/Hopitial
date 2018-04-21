@@ -67,21 +67,21 @@ public class FenRUD_employe  extends JFrame{
      */
     public FenRUD_employe(){
         
-        fieldNom.setPreferredSize(new Dimension(100, 30));
+        fieldNom.setColumns(12);;
         fieldNom.setEnabled(false);
-        fieldPrenom.setPreferredSize(new Dimension(100, 30));
+        fieldPrenom.setColumns(12);
         fieldPrenom.setEnabled(false);
-        fieldTel.setPreferredSize(new Dimension(100, 30));
+        fieldTel.setColumns(12);
         fieldTel.setEnabled(false);
-        fieldAdresse.setPreferredSize(new Dimension(100, 30));
+        fieldAdresse.setColumns(12);
         fieldAdresse.setEnabled(false);
-        spinSalaire.setPreferredSize(new Dimension(100, 30));
+        spinSalaire.setPreferredSize(new Dimension(60, 20));
         spinSalaire.setEnabled(false);
-        fieldEmail.setPreferredSize(new Dimension(100, 30));
+        fieldEmail.setColumns(12);
         fieldEmail.setEnabled(false);
-        comboDSpecialite.setPreferredSize(new Dimension(100, 30));
+        comboDSpecialite.setPreferredSize(new Dimension(60, 20));
         comboDSpecialite.setEnabled(false);
-        comboInfRot.setPreferredSize(new Dimension(100, 30));
+        comboInfRot.setPreferredSize(new Dimension(60, 20));
         comboInfRot.setEnabled(false);
         
         tableDonnees.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
@@ -100,6 +100,8 @@ public class FenRUD_employe  extends JFrame{
         JPanel pan_1 = new JPanel();
         pan_1.setLayout(new GridBagLayout());
         GridBagConstraints gbcLayout = new GridBagConstraints();
+        gbcLayout.weightx =0;
+        gbcLayout.weighty = 2;
         
         //initialisation du positionnement à 0 en x et y
         gbcLayout.gridx = 0;
@@ -144,18 +146,6 @@ public class FenRUD_employe  extends JFrame{
         //initialisation du pas, ou déplacement, ou pas en largeur et hauteur
         gbcLayout.gridwidth = 1;
         gbcLayout.gridheight = 1;
-        pan_1.add(labAge, gbcLayout); // je l'ajoute à cette position de départ
-        gbcLayout.gridx = 1;
-        gbcLayout.fill = GridBagConstraints.HORIZONTAL;
-        gbcLayout.gridwidth = GridBagConstraints.REMAINDER;
-        gbcLayout.gridheight = 1;
-        pan_1.add(fieldAge, gbcLayout); // je l'ajoute à cette position de départ
-        
-        gbcLayout.gridx = 0;
-        gbcLayout.gridy = 4;
-        //initialisation du pas, ou déplacement, ou pas en largeur et hauteur
-        gbcLayout.gridwidth = 1;
-        gbcLayout.gridheight = 1;
         pan_1.add(labSexe, gbcLayout); // je l'ajoute à cette position de départ
         gbcLayout.gridx = 1;
         gbcLayout.fill = GridBagConstraints.HORIZONTAL;
@@ -164,7 +154,7 @@ public class FenRUD_employe  extends JFrame{
         pan_1.add(comboSexe, gbcLayout); // je l'ajoute à cette position de départ
         
         gbcLayout.gridx = 0;
-        gbcLayout.gridy = 5;
+        gbcLayout.gridy = 4;
         //initialisation du pas, ou déplacement, ou pas en largeur et hauteur
         gbcLayout.gridwidth = 1;
         gbcLayout.gridheight = 1;
@@ -176,7 +166,7 @@ public class FenRUD_employe  extends JFrame{
         pan_1.add(fieldAdresse, gbcLayout); // je l'ajoute à cette position de départ
         
         gbcLayout.gridx = 0;
-        gbcLayout.gridy = 6;
+        gbcLayout.gridy = 5;
         //initialisation du pas, ou déplacement, ou pas en largeur et hauteur
         gbcLayout.gridwidth = 1;
         gbcLayout.gridheight = 1;
@@ -188,7 +178,7 @@ public class FenRUD_employe  extends JFrame{
         pan_1.add(fieldEmail, gbcLayout); // je l'ajoute à cette position de départ
 
         gbcLayout.gridx = 0;
-        gbcLayout.gridy = 7;
+        gbcLayout.gridy = 6;
         //initialisation du pas, ou déplacement, ou pas en largeur et hauteur
         gbcLayout.gridwidth = 1;
         gbcLayout.gridheight = 1;
@@ -200,7 +190,7 @@ public class FenRUD_employe  extends JFrame{
         pan_1.add(fieldTel, gbcLayout); // je l'ajoute à cette position de départ
         
         gbcLayout.gridx = 0;
-        gbcLayout.gridy = 8;
+        gbcLayout.gridy = 7;
         //initialisation du pas, ou déplacement, ou pas en largeur et hauteur
         gbcLayout.gridwidth = 1;
         gbcLayout.gridheight = 1;
@@ -212,7 +202,7 @@ public class FenRUD_employe  extends JFrame{
         pan_1.add(comboDSpecialite, gbcLayout); // je l'ajoute à cette position de départ
         
         gbcLayout.gridx = 0;
-        gbcLayout.gridy = 9;
+        gbcLayout.gridy = 8;
         //initialisation du pas, ou déplacement, ou pas en largeur et hauteur
         gbcLayout.gridwidth = 1;
         gbcLayout.gridheight = 1;
@@ -224,7 +214,7 @@ public class FenRUD_employe  extends JFrame{
         pan_1.add(comboInfRot, gbcLayout); // je l'ajoute à cette position de départ
         
         gbcLayout.gridx = 0;
-        gbcLayout.gridy = 10;
+        gbcLayout.gridy = 9;
         //initialisation du pas, ou déplacement, ou pas en largeur et hauteur
         gbcLayout.gridwidth = 1;
         gbcLayout.gridheight = 1;
@@ -236,7 +226,7 @@ public class FenRUD_employe  extends JFrame{
         pan_1.add(fieldCodeS, gbcLayout); // je l'ajoute à cette position de départ
         
         gbcLayout.gridx = 0;
-        gbcLayout.gridy = 11;
+        gbcLayout.gridy = 10;
         //initialisation du pas, ou déplacement, ou pas en largeur et hauteur
         gbcLayout.gridwidth = 1;
         gbcLayout.gridheight = 1;
@@ -255,7 +245,7 @@ public class FenRUD_employe  extends JFrame{
         panelTempo.add(btnUpdate, BorderLayout.WEST);
         
         gbcLayout.gridx = 0;
-        gbcLayout.gridy = 12;
+        gbcLayout.gridy = 11;
         gbcLayout.fill = GridBagConstraints.HORIZONTAL;
         gbcLayout.gridwidth = GridBagConstraints.REMAINDER;
         gbcLayout.gridheight = 1;
@@ -375,10 +365,6 @@ public class FenRUD_employe  extends JFrame{
 
     public JTextField getFieldCodeS() {
         return fieldCodeS;
-    }
-
-    public JTextField getFieldAge() {
-        return fieldAge;
     }
 
     public JComboBox getComboSexe() {

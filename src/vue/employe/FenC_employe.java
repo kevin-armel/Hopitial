@@ -3,10 +3,8 @@ package vue.employe;
 
 
 import java.awt.BorderLayout;
-import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.GridLayout;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -26,22 +24,23 @@ public class FenC_employe extends JFrame {
     
     private final JTextField fieldNom = new JTextField();
     private final JTextField fieldPrenom = new JTextField();
-    private final JTextField fieldAdresse = new JTextField(); //Creation des champs de saisie pour l'utilisateur
-    private final JTextField fieldSpecia = new JTextField(); //Champs de saisie propre aux docteurs  
- 
+    private final JTextField fieldTel = new JTextField();
+    private final JTextField fieldAdresse = new JTextField(); //Creation des champs de saisie pour l'utilisateur  
+    private final JTextField fieldEmail = new JTextField();
+    
+    private final JLabel labCodeServ = new JLabel("Code du service: ");
     private final JLabel labSpecialite = new JLabel("Specialite: ");
     private final JLabel labRotation = new JLabel("Rotation: ");
     private final JLabel labSalaire = new JLabel("Salaire: "); //Label ajouter en fonction de si docteur ou infirmier choisis   
     
     private final JComboBox comboRotation = new JComboBox(); 
     private final JComboBox comboTypeEmploye = new JComboBox();
+    private final JComboBox comboCodeServ = new JComboBox(); 
+    private final JComboBox comboSexe = new JComboBox(); 
+    private final JComboBox combodSpecia = new JComboBox(); //Champs de saisie propre aux docteurs  
     
     private final JSpinner spinSalaire = new JSpinner(new SpinnerNumberModel(0, 0, 9999, 0.1));
-    private final JSpinner no1 = new JSpinner(new SpinnerNumberModel(0, 0, 99, 1));
-    private final JSpinner no2 = new JSpinner(new SpinnerNumberModel(0, 0, 99, 1));
-    private final JSpinner no3 = new JSpinner(new SpinnerNumberModel(0, 0, 99, 1));
-    private final JSpinner no4 = new JSpinner(new SpinnerNumberModel(0, 0, 99, 1));
-    private final JSpinner no5 = new JSpinner(new SpinnerNumberModel(0, 0, 99, 1));
+
    
     /**
      * constructeur de la classe
@@ -51,18 +50,18 @@ public class FenC_employe extends JFrame {
         JPanel panelHaut = new JPanel(new BorderLayout());
         JPanel panelCentre = new JPanel(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
-        JPanel panelTel = new JPanel(new GridLayout());
         GridBagConstraints gbc2 = new GridBagConstraints();
         JPanel panelBas = new JPanel(new BorderLayout()); //Création des pannels
+        fieldNom.setColumns(12);
+        fieldPrenom.setColumns(12);
+        fieldTel.setColumns(12);
+        fieldAdresse.setColumns(12);
+        fieldEmail.setColumns(12);
+       
         
-        
-        comboTypeEmploye.addItem("Employe");
+        comboTypeEmploye.addItem("");
         comboTypeEmploye.addItem("Docteur");
         comboTypeEmploye.addItem("Infirmier"); //Création du combobox et ajout des items
-        
-        comboRotation.addItem("Jour");
-        comboRotation.addItem("Nuit"); //Initialisation du combobox poour rotation
-   
         
         panelHaut.add(btnBack, BorderLayout.WEST);
         panelHaut.add(btnAide, BorderLayout.EAST); //mise en forme du pannel du haut
@@ -70,11 +69,12 @@ public class FenC_employe extends JFrame {
         panelGeneral.add(panelHaut, BorderLayout.NORTH); //ajout du pannel au pannel général
         
         panelBas.add(btnAnnuler, BorderLayout.EAST);
-        panelBas.add(btnValider, BorderLayout.CENTER); //mise en forme du pannel du bas
+        panelBas.add(btnValider, BorderLayout.WEST); //mise en forme du pannel du bas
         
         panelGeneral.add(panelBas, BorderLayout.SOUTH); //ajout du pannnel au pannel général
         
-        
+        gbc.weightx =0;
+        gbc.weighty = 2;
         gbc.gridx=0;
         gbc.gridy=0;
         gbc.gridwidth=1;
@@ -91,7 +91,6 @@ public class FenC_employe extends JFrame {
         panelCentre.add(new JLabel("Nom: "), gbc);
         gbc.gridx=1;
         gbc.gridwidth=GridBagConstraints.REMAINDER;
-        fieldNom.setPreferredSize(new Dimension(100,30));
         panelCentre.add(fieldNom, gbc); //Ligne 2 du pannel centrale
         
         gbc.gridx=0;
@@ -101,46 +100,17 @@ public class FenC_employe extends JFrame {
         panelCentre.add(new JLabel("Prenom: "), gbc);
         gbc.gridx=1;
         gbc.gridwidth=GridBagConstraints.REMAINDER;
-        fieldPrenom.setPreferredSize(new Dimension(100,30));
         panelCentre.add(fieldPrenom, gbc); //Ligne 3 du pannel centrale
-        
-        
-        
-        gbc2.gridx=0; 
-        gbc2.gridwidth=1; 
-        gbc2.gridheight=1;  
-        panelTel.add(no1,gbc2);
-        
-        gbc2.gridx=1; 
-        gbc2.gridwidth=1; 
-        gbc2.gridheight=1;  
-        panelTel.add(no2,gbc2);
-       
-        gbc2.gridx=2; 
-        gbc2.gridwidth=1; 
-        gbc2.gridheight=1;  
-        panelTel.add(no3,gbc2);
-         
-        gbc2.gridx=3; 
-        gbc2.gridwidth=1; 
-        gbc2.gridheight=1;  
-        panelTel.add(no4,gbc2);
-        
-        gbc2.gridx=4; 
-        gbc2.gridwidth=1; 
-        gbc2.gridheight=1;  
-        panelTel.add(no5,gbc2);
                 
         gbc2.gridx=0; 
-        gbc2.gridy=5; 
+        gbc2.gridy=3; 
         gbc2.gridwidth=1; 
         gbc2.gridheight=1; 
         panelCentre.add(new JLabel("Telephone: "),gbc2); 
         gbc2.gridx=1; 
         gbc2.gridwidth=GridBagConstraints.REMAINDER;
-        panelCentre.add(panelTel,gbc2);              //Ligne 4 panel centrale
-        
-       
+        gbc2.gridheight=1;
+        panelCentre.add(fieldTel,gbc2);              //Ligne 4 panel centrale
         
         gbc.gridx=0;
         gbc.gridy=4;
@@ -149,47 +119,71 @@ public class FenC_employe extends JFrame {
         panelCentre.add(new JLabel("Adresse: "), gbc);
         gbc.gridx=1;
         gbc.gridwidth=GridBagConstraints.REMAINDER;
-        fieldAdresse.setPreferredSize(new Dimension(100,30));
+        gbc.gridheight=1;
         panelCentre.add(fieldAdresse, gbc); //Ligne 5 du pannel centrale
         
         gbc.gridx=0;
-        gbc.gridy=8;
+        gbc.gridy=5;
         gbc.gridwidth=1;
         gbc.gridheight=1;
-        panelCentre.add(labSpecialite, gbc);
+        panelCentre.add(new JLabel("Sexe: "), gbc);
         gbc.gridx=1;
         gbc.gridwidth=GridBagConstraints.REMAINDER;
-        fieldSpecia.setPreferredSize(new Dimension(100,30));
-        panelCentre.add(fieldSpecia, gbc); //Ligne 6 du pannel centrale (si docteur choisis)
-        labSpecialite.setVisible(false);
-        fieldSpecia.setVisible(false); //Pas affiché car employé par defaut
+        gbc.gridheight=1;
+        panelCentre.add(comboSexe, gbc); //Ligne 5 du pannel centrale
         
         gbc.gridx=0;
         gbc.gridy=6;
         gbc.gridwidth=1;
         gbc.gridheight=1;
-        panelCentre.add(labRotation, gbc);
+        panelCentre.add(new JLabel("E-mail: "), gbc);
         gbc.gridx=1;
         gbc.gridwidth=GridBagConstraints.REMAINDER;
-        panelCentre.add(comboRotation, gbc); //Ligne  du pannel 7 centrale 
-        labRotation.setVisible(false);
-        comboRotation.setVisible(false); //Pas affiché car employé par defaut        
+        gbc.gridheight=1;
+        panelCentre.add(fieldEmail, gbc); //Ligne 5 du pannel centrale
         
         gbc.gridx=0;
         gbc.gridy=7;
+        gbc.gridwidth=1;
+        gbc.gridheight=1;
+        panelCentre.add(labSpecialite, gbc);
+        gbc.gridx=1;
+        gbc.gridwidth=GridBagConstraints.REMAINDER;
+        gbc.gridheight=1;
+        panelCentre.add(combodSpecia, gbc); //Ligne 6 du pannel centrale (si docteur choisis)
+        
+        gbc.gridx=0;
+        gbc.gridy=8;
+        gbc.gridwidth=1;
+        gbc.gridheight=1;
+        panelCentre.add(labRotation, gbc);
+        gbc.gridx=1;
+        gbc.gridwidth=GridBagConstraints.REMAINDER;
+        gbc.gridheight=1;
+        panelCentre.add(comboRotation, gbc); //Ligne  du pannel 7 centrale 
+        
+        gbc.gridx=0;
+        gbc.gridy=9;
         gbc.gridwidth=1;
         gbc.gridheight=1; 
         panelCentre.add(labSalaire, gbc);
         gbc.gridx=1;
         gbc.gridwidth=GridBagConstraints.REMAINDER;
+        gbc.gridheight=1;
         panelCentre.add(spinSalaire, gbc); //Ligne 8 du pannel centrale (si docteur choisis)
-        labSalaire.setVisible(false);
-        spinSalaire.setVisible(false); //Pas affiché car employé par defaut        
+              
+        gbc.gridx=0;
+        gbc.gridy=10;
+        gbc.gridwidth=1;
+        gbc.gridheight=1; 
+        panelCentre.add(labCodeServ, gbc);
+        gbc.gridx=1;
+        gbc.gridwidth=GridBagConstraints.REMAINDER;
+        gbc.gridheight=1; 
+        panelCentre.add(comboCodeServ, gbc); //Ligne 8 du pannel centrale (si docteur choisis)
         
         panelGeneral.add(panelCentre, BorderLayout.CENTER); //ajout du panel central au panel general
-        
-        
-         
+
         setContentPane(panelGeneral);
         setTitle("Creation employe");
         pack();
@@ -199,29 +193,7 @@ public class FenC_employe extends JFrame {
     }
         
     
-     //getter des JSpinner
-
-    public JSpinner getno1(){
-        return no1;
-    }
-    
-    public JSpinner getno2(){
-        return no2;
-    }
-
-    public JSpinner getno3(){
-        return no3;
-    }
-
-    public JSpinner getno4(){
-        return no4;
-    }    
-    
-    public JSpinner getno5(){
-        return no5;
-    }
-    
-    //getter des JButton
+   //getter des JButton
     
     public JButton getbtnAide(){
         return btnAide;
@@ -287,9 +259,10 @@ public class FenC_employe extends JFrame {
         return fieldAdresse;
     }
 
-    public JTextField getFieldSpecia() {
-        return fieldSpecia;
+    public JComboBox getCombodSpecia() {
+        return combodSpecia;
     }
+
 
     public JComboBox getComboRotation() {
         return comboRotation;
@@ -301,6 +274,26 @@ public class FenC_employe extends JFrame {
 
     public JSpinner getSpinSalaire() {
         return spinSalaire;
+    }
+
+    public JTextField getFieldTel() {
+        return fieldTel;
+    }
+
+    public JTextField getFieldEmail() {
+        return fieldEmail;
+    }
+
+    public JLabel getLabCodeServ() {
+        return labCodeServ;
+    }
+
+    public JComboBox getComboCodeServ() {
+        return comboCodeServ;
+    }
+
+    public JComboBox getComboSexe() {
+        return comboSexe;
     }
     
     

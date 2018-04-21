@@ -13,12 +13,13 @@ public class FenC_service extends JFrame {
     private final JButton btnAide = new JButton("Aide");
     private final JButton btnAnnuler = new JButton("Annuler");
     private final JButton btnValider = new JButton("Valider"); //Création des Bouttons
+    private final JButton btnCleDocteur = new JButton("Docteur affecté"); //Création des Bouttons
     
     private final JTextField fieldCode = new JTextField();
     private final JTextField fieldNom = new JTextField();
     private final JComboBox ComboBatiment = new JComboBox();
     
-    private final JSpinner directeur = new JSpinner(new SpinnerNumberModel(0, 0, 99, 1));
+    public static  JTextField fieldCleDocteur = new JTextField();
         
     /**
      * constructeur de la classe
@@ -36,7 +37,7 @@ public class FenC_service extends JFrame {
         panelGeneral.add(panelHaut, BorderLayout.NORTH); //ajout du pannel au pannel général
         
         panelBas.add(btnAnnuler, BorderLayout.EAST);
-        panelBas.add(btnValider, BorderLayout.CENTER); //mise en forme du pannel du bas
+        panelBas.add(btnValider, BorderLayout.WEST); //mise en forme du pannel du bas
         
         panelGeneral.add(panelBas, BorderLayout.SOUTH); //ajout du pannnel au pannel général
         
@@ -74,11 +75,11 @@ public class FenC_service extends JFrame {
         gbc.gridy=3;
         gbc.gridwidth=1;
         gbc.gridheight=1;
-        panelCentre.add(new JLabel("Numero Directeur: "), gbc);
+        panelCentre.add(btnCleDocteur, gbc);
         gbc.gridx=1;
         gbc.gridwidth=GridBagConstraints.REMAINDER;
-        directeur.setPreferredSize(new Dimension(100,30));
-        panelCentre.add(directeur, gbc); //Ligne 4 du pannel centrale
+        fieldCleDocteur.setPreferredSize(new Dimension(100,30));
+        panelCentre.add(fieldCleDocteur, gbc); //Ligne 4 du pannel centrale
         
         panelGeneral.add(panelCentre, BorderLayout.CENTER);
         
@@ -92,12 +93,6 @@ public class FenC_service extends JFrame {
     }
 
     
-    //getter des Jspinner
-    
-    public JSpinner getdirecteur(){
-        return directeur;
-    }
-
     public JButton getBtnBack() {
         return btnBack;
     }
@@ -122,10 +117,18 @@ public class FenC_service extends JFrame {
         return fieldNom;
     }
 
+    public JButton getBtnCleDocteur() {
+        return btnCleDocteur;
+    }
+
     public JComboBox getComboBatiment() {
         return ComboBatiment;
     }
 
-    
+    public JTextField getFieldCleDocteur() {
+        return fieldCleDocteur;
+    }
+
+
     
 }

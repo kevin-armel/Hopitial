@@ -4,29 +4,31 @@ package vue.chambre;
 import java.awt.BorderLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JSpinner;
 import javax.swing.JTextField;
 import javax.swing.SpinnerNumberModel;
 
 
-public class FenC_chambre extends JFrame implements ActionListener{
+public class FenC_chambre extends JFrame{
     
     //variables
-    private final JSpinner noCh = new JSpinner(new SpinnerNumberModel(0, 0, 9999, 1));
-    private final JSpinner noSur = new JSpinner(new SpinnerNumberModel(0, 0, 9999, 1));
-    private final JSpinner noLit = new JSpinner(new SpinnerNumberModel(0, 0, 9999, 1));
+    private final JSpinner spinNumChambre = new JSpinner(new SpinnerNumberModel(0, 0, 999, 1));
+    public static JTextField fieldCleInfirm = new JTextField();
+    
+    private final JSpinner spinNumLit = new JSpinner(new SpinnerNumberModel(0, 0, 99, 1));
+    
+    private final JComboBox comboCodeServ = new JComboBox();
+    
     private final JButton btnBack = new JButton("Retour"); //creation bouton retour
     private final JButton btnAide = new JButton("Aide"); ; //creation bouton aide
     private final JButton btnValider = new JButton("Valider");; //creation bouton valider
     private final JButton btnAnnuler = new JButton("Annuler"); //creation bouton annuler
+    private final JButton btnCleInfirm = new JButton("Numéro Surveillant"); //creation bouton annuler
     
     /**
      * constructeur de la classe
@@ -38,7 +40,7 @@ public class FenC_chambre extends JFrame implements ActionListener{
         JPanel panelCentre = new JPanel (new GridBagLayout()); //creation du panel centre
         GridBagConstraints gbc = new GridBagConstraints(); //creation du constructeur permettant de placer les elements dans la grille de la fenetre
         JPanel panelBas = new JPanel(new BorderLayout()); //creation du panel bas
-        
+        fieldCleInfirm.setColumns(12);
         
         //panel haut
 
@@ -48,33 +50,48 @@ public class FenC_chambre extends JFrame implements ActionListener{
         
         
         //panel centre
+        gbc.weightx =0;
+        gbc.weighty = 2;
+        
         //label et spinner numero chambre
         gbc.gridx=0; //initialisation du positionnement en x
         gbc.gridy=0; //initialisation du positionnement en y
         gbc.gridwidth=1; //initialisation de la largeur 
         gbc.gridheight=1; //initialisation de la hauteur 
-        panelCentre.add(new JLabel("Numéro de la chambre : "),gbc); //
+        panelCentre.add(new JLabel("Numéro de la chambre: "),gbc); //
         gbc.gridx=1; //prochain positionnement x = x précédent + width
         gbc.gridwidth=GridBagConstraints.REMAINDER; //
-        panelCentre.add(noCh,gbc);
-        //label et spinner numero du surveillant affecté a la chombre
-        gbc.gridx=0; 
-        gbc.gridy=1; 
-        gbc.gridwidth=1;  
-        gbc.gridheight=1; 
-        panelCentre.add(new JLabel("Numéro du surveillant : "),gbc); //
-        gbc.gridx=1; 
-        gbc.gridwidth=GridBagConstraints.REMAINDER;
-        panelCentre.add(noSur,gbc);
+        panelCentre.add(spinNumChambre,gbc);
+        
+        //label et spinner numero chambre
+        gbc.gridx=0; //initialisation du positionnement en x
+        gbc.gridy=1; //initialisation du positionnement en y
+        gbc.gridwidth=1; //initialisation de la largeur 
+        gbc.gridheight=1; //initialisation de la hauteur 
+        panelCentre.add(new JLabel("Code du service: "),gbc); //
+        gbc.gridx=1; //prochain positionnement x = x précédent + width
+        gbc.gridwidth=GridBagConstraints.REMAINDER; //
+        panelCentre.add(comboCodeServ,gbc);
+        
         //label et spinner nombre de lits present au sein de la chambre
         gbc.gridx=0; 
-        gbc.gridy=3; 
+        gbc.gridy=2; 
         gbc.gridwidth=1; 
         gbc.gridheight=1; 
-        panelCentre.add(new JLabel("Nombre de lits : "),gbc); //
+        panelCentre.add(new JLabel("Nombre de lits: "),gbc); //
         gbc.gridx=1; 
         gbc.gridwidth=GridBagConstraints.REMAINDER;
-        panelCentre.add(noLit,gbc);
+        panelCentre.add(spinNumLit,gbc);
+        
+        //label et spinner numero du surveillant affecté a la chombre
+        gbc.gridx=0; 
+        gbc.gridy=3; 
+        gbc.gridwidth=1;  
+        gbc.gridheight=1; 
+        panelCentre.add(btnCleInfirm,gbc); //
+        gbc.gridx=1; 
+        gbc.gridwidth=GridBagConstraints.REMAINDER;
+        panelCentre.add(fieldCleInfirm,gbc);
         
         panelGeneral.add(panelCentre, BorderLayout.CENTER); //ajout du panel centre au panel general
         
@@ -84,13 +101,6 @@ public class FenC_chambre extends JFrame implements ActionListener{
         panelBas.add(btnAnnuler,BorderLayout.EAST); //ajout bouton Annuler au panel du bas
         panelGeneral.add(panelBas, BorderLayout.SOUTH); //ajout du panel bas au panel general
 
-        
-        //bouton sur ecoute
-        btnAide.addActionListener(this);
-        btnAnnuler.addActionListener(this);
-        btnValider.addActionListener(this);
-                
-        
         //methodes
         setContentPane(panelGeneral); //methode affichant l'ensemble du contenu affecte au panel general 
         setTitle("Creation chambre"); //titre panel general
@@ -99,27 +109,7 @@ public class FenC_chambre extends JFrame implements ActionListener{
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //fermeture juste de la fenetre en question 
   
     }
-    public void actionPerformed (ActionEvent e){
-        if(e.getSource() == btnAnnuler){
-            noCh.setValue(0);
-            noSur.setValue(0);
-            noLit.setValue(0);
-        }
-        if(e.getSource() == btnAide){
-            JOptionPane.showMessageDialog(null, "Débrouille toi !", "Aide création chambre", JOptionPane.PLAIN_MESSAGE);
-        }
-    }
     
-    //getteurs des zones valeurs
-    public JSpinner getnoCh(){ 
-        return noCh;
-    }
-    public JSpinner getnoSur(){
-        return noSur;
-    }
-    public JSpinner getnoLit(){
-        return noLit;
-    }
     
     //getteurs des boutons 
 
@@ -137,6 +127,26 @@ public class FenC_chambre extends JFrame implements ActionListener{
 
     public JButton getBtnAnnuler() {
         return btnAnnuler;
+    }
+
+    public JSpinner getSpinNumChambre() {
+        return spinNumChambre;
+    }
+
+    public JTextField getFieldCleInfirm() {
+        return fieldCleInfirm;
+    }
+
+    public JSpinner getSpinNumLit() {
+        return spinNumLit;
+    }
+
+    public JButton getBtnCleInfirm() {
+        return btnCleInfirm;
+    }
+
+    public JComboBox getComboCodeServ() {
+        return comboCodeServ;
     }
     
 }

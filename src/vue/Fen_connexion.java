@@ -35,10 +35,10 @@ public class Fen_connexion extends JFrame{
      * constructeur de la classe
      */
     public Fen_connexion(){
-        fieldPass.setColumns(15);
-        fieldBDD.setColumns(15);
-        fieldBDDPass.setColumns(15);
-        fieldLogin.setColumns(15);
+        fieldPass.setColumns(12);
+        fieldBDD.setColumns(12);
+        fieldBDDPass.setColumns(12);
+        fieldLogin.setColumns(12);
         labelBDD.setVisible(false);
         labelBDDPass.setVisible(false);
         fieldBDD.setVisible(false);
@@ -47,6 +47,8 @@ public class Fen_connexion extends JFrame{
         
         JPanel panCentral = new JPanel(new GridBagLayout());
         GridBagConstraints gbcLayout = new GridBagConstraints();
+        gbcLayout.weightx = 0;
+        gbcLayout.weighty = 2;
         //initialisation du positionnement à 0 en x et y
         gbcLayout.gridx = 0;
         gbcLayout.gridy = 0;

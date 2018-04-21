@@ -94,12 +94,12 @@ public class FenRUD_service extends JFrame{
         //initialisation du pas, ou déplacement, ou pas en largeur et hauteur
         gbcLayout.gridwidth = 1;
         gbcLayout.gridheight = 1;
-        pan_1.add(labNom, gbcLayout); // je l'ajoute à cette position de départ
+        pan_1.add(labCode, gbcLayout); // je l'ajoute à cette position de départ
         gbcLayout.gridx = 1;
         gbcLayout.fill = GridBagConstraints.HORIZONTAL;
         gbcLayout.gridwidth = GridBagConstraints.REMAINDER;
         gbcLayout.gridheight = 1;
-        pan_1.add(fieldNom, gbcLayout); // je l'ajoute à cette position de départ
+        pan_1.add(fieldCode, gbcLayout); // je l'ajoute à cette position de départ
         
         //initialisation du positionnement à 0 en x et y
         gbcLayout.gridx = 0;
@@ -107,12 +107,12 @@ public class FenRUD_service extends JFrame{
         //initialisation du pas, ou déplacement, ou pas en largeur et hauteur
         gbcLayout.gridwidth = 1;
         gbcLayout.gridheight = 1;
-        pan_1.add(labCode, gbcLayout); // je l'ajoute à cette position de départ
+        pan_1.add(labNom, gbcLayout); // je l'ajoute à cette position de départ
         gbcLayout.gridx = 1;
         gbcLayout.fill = GridBagConstraints.HORIZONTAL;
         gbcLayout.gridwidth = GridBagConstraints.REMAINDER;
         gbcLayout.gridheight = 1;
-        pan_1.add(fieldCode, gbcLayout); // je l'ajoute à cette position de départ
+        pan_1.add(fieldNom, gbcLayout); // je l'ajoute à cette position de départ
         
         //initialisation du positionnement à 0 en x et y
         gbcLayout.gridx = 0;

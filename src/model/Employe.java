@@ -108,7 +108,7 @@ public class Employe extends Abstract_Personne implements InterfaceEmploye{
     public DefaultComboBoxModel getModelSexe(){
         DefaultComboBoxModel modelData = new DefaultComboBoxModel();
         try {
-            connex.setRset(connex.getStmt().executeQuery("SELECT DISTINCT infirmier.rotation FROM infirmier WHERE rotation = rotation;"));
+            connex.setRset(connex.getStmt().executeQuery("SELECT DISTINCT employe.sexe FROM employe WHERE sexe = sexe;"));
             connex.getRset().beforeFirst();
             while(connex.getRset().next()){
                 modelData.addElement(connex.getRset().getString(1));
@@ -132,6 +132,20 @@ public class Employe extends Abstract_Personne implements InterfaceEmploye{
             System.out.println(e.getMessage());
         }
         
+        return modelData;
+    }
+    
+       public DefaultComboBoxModel getModelCodeServ(){
+        DefaultComboBoxModel modelData = new DefaultComboBoxModel();
+        try {
+            connex.setRset(connex.getStmt().executeQuery("SELECT DISTINCT code FROM service;"));
+            connex.getRset().beforeFirst();
+            while(connex.getRset().next()){
+                modelData.addElement(connex.getRset().getString(1));
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
         return modelData;
     }
     

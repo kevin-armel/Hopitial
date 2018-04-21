@@ -15,31 +15,29 @@ public class MaladeC_controller implements ActionListener, MaladeC_Interface{
 
     public MaladeC_controller(Malade m) {
         this.modelMalade = m;
-        fenC_malade.repaint();
-        fenC_malade.setVisible(true);
         
+        fenC_malade.getComboMutuelle().setModel(modelMalade.getModelMutuelle());
+        fenC_malade.getComboSexe().setModel(modelMalade.getModelSexe());
         fenC_malade.getBtnBack().addActionListener(this);
         fenC_malade.getBtnAnnuler().addActionListener(this);
         fenC_malade.getBtnAide().addActionListener(this);
         fenC_malade.getBtnValider().addActionListener(this);
+        
+        fenC_malade.repaint();
+        fenC_malade.setVisible(true);
     }
 
     @Override
     public void viderChamps(){
-        fenC_malade.getnum().setValue(0);
-            fenC_malade.getno00().setValue(0);
-            fenC_malade.getno11().setValue(0);
-            fenC_malade.getno22().setValue(0);
-            fenC_malade.getno33().setValue(0);
-            fenC_malade.getno44().setValue(0);
-            fenC_malade.getSpinTaille().setValue(0);
-            fenC_malade.getSpinPoids().setValue(0);
-            fenC_malade.getSpinAge().setValue(0);
-            fenC_malade.getComboSexe().setSelectedIndex(0);
-            fenC_malade.getFieldNom().setText("");
-            fenC_malade.getFieldPrenom().setText("");
-            fenC_malade.getFieldAddresse().setText("");
-            fenC_malade.getComboMutuelle().setSelectedIndex(0);
+        fenC_malade.getFieldTel().setText("");
+        fenC_malade.getSpinTaille().setValue(0);
+        fenC_malade.getSpinPoids().setValue(0);
+        fenC_malade.getFieldAge().setText("");
+        fenC_malade.getComboSexe().setSelectedIndex(0);
+        fenC_malade.getFieldNom().setText("");
+        fenC_malade.getFieldPrenom().setText("");
+        fenC_malade.getFieldAddresse().setText("");
+        fenC_malade.getComboMutuelle().setSelectedIndex(0);
     }
     
     

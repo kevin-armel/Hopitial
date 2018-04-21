@@ -8,6 +8,7 @@ import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -31,8 +32,8 @@ public class FenRUD_chambre extends JFrame{
     private final JButton btnSupression = new JButton("Supprimer");
     private final JButton btnReporting = new JButton("Prise de décision");
     private final JButton btnUpdate = new JButton("Appliquer les modifications");
-    private final JButton btnCleServic = new JButton("Choix Surveillant");
-    private final JButton btnCleInfirm = new JButton("Choix Infirmier");
+    private final JButton btnCleSurveil = new JButton("Choix Surveillant");
+    private final JLabel labCodeServ = new JLabel("Code du service");
     
     private final JTable tableDonnees = new JTable(17, 5);
     
@@ -40,7 +41,7 @@ public class FenRUD_chambre extends JFrame{
     private final JLabel labNbrLits = new JLabel("Nombre de lits: ");
     
     private final JTextField fieldCleServic = new JTextField("Choix du service et surveillant: ");
-    private final JTextField fieldCleInfirm = new JTextField("Choisir l'infirmier: ");
+    private final JComboBox comboCodeServ = new JComboBox();
     
     private final JSpinner spinNumChambree = new JSpinner(new SpinnerNumberModel(0, 0, 999, 1));
     private final JSpinner spinNbrLits = new JSpinner(new SpinnerNumberModel(0, 0, 99, 1));
@@ -57,10 +58,11 @@ public class FenRUD_chambre extends JFrame{
         btnUpdate.setEnabled(false);
         spinNumChambree.setEnabled(false);
         spinNbrLits.setEnabled(false);
-        btnCleServic.setEnabled(false);
-        btnCleInfirm.setEnabled(false);
+        btnCleSurveil.setEnabled(false);
+        comboCodeServ.setEnabled(false);
+        fieldCleServic.setColumns(12);
         fieldCleServic.setEnabled(false);
-        fieldCleInfirm.setEnabled(false);
+
         
         tableDonnees.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         
@@ -75,6 +77,8 @@ public class FenRUD_chambre extends JFrame{
         pan_1.setLayout(new GridBagLayout());
         GridBagConstraints gbcLayout = new GridBagConstraints();
         
+        gbcLayout.weightx =0;
+        gbcLayout.weighty = 2;
         //initialisation du positionnement à 0 en x et y
         gbcLayout.gridx = 0;
         gbcLayout.gridy = 0;
@@ -106,36 +110,36 @@ public class FenRUD_chambre extends JFrame{
         //initialisation du pas, ou déplacement, ou pas en largeur et hauteur
         gbcLayout.gridwidth = 1;
         gbcLayout.gridheight = 1;
-        pan_1.add(labNbrLits, gbcLayout); // je l'ajoute à cette position de départ
+        pan_1.add(labCodeServ, gbcLayout); // je l'ajoute à cette position de départ
         gbcLayout.gridx = 1;
         gbcLayout.fill = GridBagConstraints.HORIZONTAL;
         gbcLayout.gridwidth = GridBagConstraints.REMAINDER;
         gbcLayout.gridheight = 1;
-        pan_1.add(spinNbrLits, gbcLayout); // je l'ajoute à cette position de départ
+        pan_1.add(comboCodeServ, gbcLayout); // je l'ajoute à cette position de départ
         
         gbcLayout.gridx = 0;
         gbcLayout.gridy = 3;
         //initialisation du pas, ou déplacement, ou pas en largeur et hauteur
         gbcLayout.gridwidth = 1;
         gbcLayout.gridheight = 1;
-        pan_1.add(btnCleInfirm, gbcLayout); // je l'ajoute à cette position de départ
+        pan_1.add(btnCleSurveil, gbcLayout); // je l'ajoute à cette position de départ
         gbcLayout.gridx = 1;
         gbcLayout.fill = GridBagConstraints.HORIZONTAL;
         gbcLayout.gridwidth = GridBagConstraints.REMAINDER;
         gbcLayout.gridheight = 1;
-        pan_1.add(fieldCleInfirm, gbcLayout); // je l'ajoute à cette position de départ
+        pan_1.add(fieldCleServic, gbcLayout); // je l'ajoute à cette position de départ
         
         gbcLayout.gridx = 0;
         gbcLayout.gridy = 4;
         //initialisation du pas, ou déplacement, ou pas en largeur et hauteur
         gbcLayout.gridwidth = 1;
         gbcLayout.gridheight = 1;
-        pan_1.add(btnCleServic, gbcLayout); // je l'ajoute à cette position de départ
+        pan_1.add(labNbrLits, gbcLayout); // je l'ajoute à cette position de départ
         gbcLayout.gridx = 1;
         gbcLayout.fill = GridBagConstraints.HORIZONTAL;
         gbcLayout.gridwidth = GridBagConstraints.REMAINDER;
         gbcLayout.gridheight = 1;
-        pan_1.add(fieldCleServic, gbcLayout); // je l'ajoute à cette position de départ
+        pan_1.add(spinNbrLits, gbcLayout); // je l'ajoute à cette position de départ
         
         JPanel panelTempo = new JPanel(new BorderLayout(50, 30));
         JSeparator separe1 = new JSeparator(JSeparator.HORIZONTAL);
@@ -202,12 +206,8 @@ public class FenRUD_chambre extends JFrame{
         return btnUpdate;
     }
 
-    public JButton getBtnCleServic() {
-        return btnCleServic;
-    }
-
-    public JButton getBtnCleInfirm() {
-        return btnCleInfirm;
+    public JButton getBtnCleSurveil() {
+        return btnCleSurveil;
     }
 
     public JTable getTableDonnees() {
@@ -226,10 +226,6 @@ public class FenRUD_chambre extends JFrame{
         return fieldCleServic;
     }
 
-    public JTextField getFieldCleInfirm() {
-        return fieldCleInfirm;
-    }
-
     public JSpinner getSpinNumChambree() {
         return spinNumChambree;
     }
@@ -241,5 +237,9 @@ public class FenRUD_chambre extends JFrame{
     public JCheckBox getCheckOnModif() {
         return checkOnModif;
     }
-        
+
+    public JComboBox getComboCodeServ() {
+        return comboCodeServ;
+    }
+    
 }

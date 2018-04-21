@@ -3,14 +3,31 @@ package model;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.table.DefaultTableModel;
 import static model.Accueil.connex;
 
 
 public class Service {
+
+    public Service() {
+    }
     
+       public DefaultComboBoxModel getModelBatiment(){
+        DefaultComboBoxModel modelData = new DefaultComboBoxModel();
+        try {
+            connex.setRset(connex.getStmt().executeQuery("SELECT DISTINCT batiment FROM service;"));
+            connex.getRset().beforeFirst();
+            while(connex.getRset().next()){
+                modelData.addElement(connex.getRset().getString(1));
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return modelData;
+    }
     
-        public DefaultTableModel getModelDataTable(){
+    public DefaultTableModel getModelDataTable(){
         DefaultTableModel modelData = new DefaultTableModel();
         modelData.addColumn("Nom Service");
         modelData.addColumn("Code Service");
