@@ -4,7 +4,6 @@ package controleur;
 import controleur.chambre.ChambreController;
 import controleur.employe.EmployerController;
 import controleur.malade.MaladeController;
-import controleur.service.ServiceC_controller;
 import controleur.service.ServiceController;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -17,34 +16,25 @@ import model.Recherche;
 import model.Service;
 import vue.Fen_accueil;
 import vue.Fen_connexion;
-import vue.Fen_search;
-import vue.chambre.Fen_chambre;
-import vue.employe.Fen_employe;
-import vue.malade.Fen_malade;
-import vue.service.Fen_service;
+
 
 
 public class AccueilController implements ActionListener, AccueilInterface {
     public static Boolean isConnected = false;
     private final Fen_accueil fen_accueil = new Fen_accueil();
     private final Fen_connexion fen_connexion = new Fen_connexion();
-    private final Fen_employe fen_employe = new Fen_employe();
-    private final Fen_chambre fen_chambre = new Fen_chambre();
-    private final Fen_malade fen_malade = new Fen_malade();
-    private final Fen_service fen_service = new Fen_service();
-    private final Fen_search fen_search = new Fen_search();
-    private Accueil a;
+
+    private Accueil modelAccueil;
     
     
     public AccueilController(Accueil a, boolean isFirstFen){
         //
-        this.a = a;
+        this.modelAccueil = a;
         if(isFirstFen){
             fen_connexion.setVisible(true); // je dois ensuite ecrire la methode pour me connecter a la base de donnee et faire le lien entre chaque fenetre.
             fen_connexion.repaint();
             
         }else{
-            isConnected = true;
             fen_accueil.setVisible(true);
             fen_accueil.repaint();
         }
@@ -91,21 +81,51 @@ public class AccueilController implements ActionListener, AccueilInterface {
     
     @Override
     public void viderChamps(){
-        fen_connexion.getFieldBDD().setText("hopital");
+        fen_connexion.getFieldBDD().setText("");
         fen_connexion.getFieldBDDPass().setText("");
         fen_connexion.getFieldLogin().setText("");
         fen_connexion.getFieldPass().setText("");
     }
     
+    public boolean isEmpty(){
+        boolean b = true;
+        if(fen_connexion.getCheckDistant().isSelected()){
+            if(!fen_connexion.getFieldBDD().getText().equals(""))
+                b = false;
+        }
+        if(!fen_connexion.getFieldLogin().getText().equals(""))
+            b = false;
+        return b;
+    }
+        
     @Override
     public void actionPerformed(ActionEvent ae) {
-        System.out.println("accueil");
+        
         if(ae.getSource()== fen_connexion.getBtnConnexion()){
-            //on teste la connexion a la base de données avant.
-            fen_connexion.setVisible(false);
-            isConnected = true;
-            fen_accueil.setVisible(true);
+            if(!fen_connexion.getCheckDistant().isSelected()){
+                if(!isEmpty()){
+                    if(modelAccueil.isConnectToServer(fen_connexion.getFieldBDD().getText(), fen_connexion.getFieldLogin().getText(), String.valueOf(fen_connexion.getFieldPass().getPassword()))){
+                        fen_connexion.setVisible(false);
+                        isConnected = true;
+                        fen_accueil.setVisible(true);
+                    }else
+                        JOptionPane.showMessageDialog(fen_accueil, "Autorisation refusée. Vous n'êtes pas autorisé à vous connecter au serveur ", "Connexion au serveur", JOptionPane.ERROR_MESSAGE);
+                }
+                else
+                    JOptionPane.showMessageDialog(fen_accueil, "Vérifier vos champs de saisis.", "Champs de saisis", JOptionPane.ERROR_MESSAGE);
+            }else if(fen_connexion.getCheckDistant().isSelected()){
+                if(!isEmpty()){
+                    if(modelAccueil.isConnectToServer(fen_connexion.getFieldBDD().getText(), fen_connexion.getFieldLogin().getText(), String.valueOf(fen_connexion.getFieldPass().getPassword()), String.copyValueOf(fen_connexion.getFieldBDDPass().getPassword()))){
+                        fen_connexion.setVisible(false);
+                        isConnected = true;
+                        fen_accueil.setVisible(true);
+                    }else
+                        JOptionPane.showMessageDialog(fen_accueil, "Autorisation refusée. Vous n'êtes pas autorisé à vous connecter au serveur distant. \n Contactez l'administrateur", "Connexion au serveur distant", JOptionPane.ERROR_MESSAGE);
+                }else
+                    JOptionPane.showMessageDialog(fen_accueil, "Vérifier vos champs de saisis.", "Champs de saisis", JOptionPane.ERROR_MESSAGE);
+            }
             fen_accueil.repaint();
+
         }else if(ae.getSource()== fen_connexion.getCheckOption()){
             if(fen_connexion.getCheckOption().isSelected()){
                 fen_connexion.getCheckOption().setText("Décocher pour moins d'option d'authentification");
@@ -121,6 +141,7 @@ public class AccueilController implements ActionListener, AccueilInterface {
             if(reponse == JOptionPane.YES_OPTION){
                 fen_accueil.setVisible(false);
                 isConnected = false;
+                viderChamps();
                 fen_connexion.setVisible(true);
             }
                 

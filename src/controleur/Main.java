@@ -1,45 +1,58 @@
 
 package controleur;
-import java.util.ArrayList;
-import java.util.Iterator;
 import model.Accueil;
-import model.Connexion;
-import model.Employe;
-import model.SSHTunnel;
-import vue.Fen_accueil;
 
 public class Main {
-    public static Fen_accueil fenetre;
+
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        
-        
-        
-        //fenetre = new Fen_accueil();
+
         Accueil ma = new Accueil();
         AccueilController ac = new AccueilController(ma, true);
-        /*Employe me = new Employe();
-        EmployerController ec = new EmployerController(me);
-        //Test de connexion a la base de donnees
         /*try {
-            Connexion connex = new Connexion("hopital", "root", "");
-            ArrayList<String> liste = new ArrayList<String>();
-            //insertion dans la base de donnée
-            /* Cette requette ne marche pas, c'est juste pour vous aider à comprendre comment fonctionne la fonction du prof
-            connex.ajouterRequeteMaj("INSERT INTO table(les_elements_de_la_table) values(les_valeurs_a_inserer);");
-            /
-            //exemple pour montrer une selection
-            liste = connex.remplirChampsRequete("SELECT * FROM employe;");
-            Iterator itemListe = liste.iterator();
-            while(itemListe.hasNext()){
-                System.out.println(itemListe.next());
-            }
-            connex.deconectBDD();
+            String connectionUrl = "jdbc:sqlserver://localhost:1433;databaseName=AdventureWorks;user=MyUserName;password=*****;";  
+            Connection con = DriverManager.getConnection(connectionUrl);
         } catch (Exception e) {
-            e.getMessage();
-        }*/
+            System.out.println(e.getMessage());
+        }
+        
+         // Create a variable for the connection string.  
+      String connectionUrl = "jdbc:sqlserver://localhost:1433;" +  
+         "databaseName=AdventureWorks;user=UserName;password=*****";  
+
+      // Declare the JDBC objects.  
+      Connection con = null;  
+      Statement stmt = null;  
+      ResultSet rs = null;  
+
+      try {  
+         // Establish the connection.  
+         Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");  
+         con = DriverManager.getConnection(connectionUrl);  
+
+         // Create and execute an SQL statement that returns some data.  
+         String SQL = "SELECT TOP 10 * FROM Person.Contact";  
+         stmt = con.createStatement();  
+         rs = stmt.executeQuery(SQL);  
+
+         // Iterate through the data in the result set and display it.  
+         while (rs.next()) {  
+            System.out.println(rs.getString(4) + " " + rs.getString(6));  
+         }  
+      }  
+
+      // Handle any errors that may have occurred.  
+      catch (Exception e) {  
+         e.printStackTrace();  
+      }  
+      finally {  
+         if (rs != null) try { rs.close(); } catch(Exception e) {}  
+         if (stmt != null) try { stmt.close(); } catch(Exception e) {}  
+         if (con != null) try { con.close(); } catch(Exception e) {}  
+      }*/
+        
         
     }
     
