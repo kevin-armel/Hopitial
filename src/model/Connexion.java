@@ -46,9 +46,7 @@ public class Connexion {
      * @throws java.lang.ClassNotFoundException
      */
     public Connexion(String nameDatabase, String loginDatabase, String passwordDatabase) throws SQLException, ClassNotFoundException {
-        System.out.println("Connexion: ");System.out.println(nameDatabase);System.out.println(loginDatabase);System.out.println(passwordDatabase);
-
-        // chargement driver "com.mysql.jdbc.Driver"
+       // chargement driver "com.mysql.jdbc.Driver"
         Class.forName("com.mysql.jdbc.Driver");
 
         // url de connexion "jdbc:mysql://localhost:3305/usernameECE"
