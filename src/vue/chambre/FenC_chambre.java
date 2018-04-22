@@ -2,6 +2,7 @@
 package vue.chambre;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import javax.swing.JButton;
@@ -15,6 +16,7 @@ import javax.swing.SpinnerNumberModel;
 
 
 public class FenC_chambre extends JFrame{
+    
     
     //variables
     private final JSpinner spinNumChambre = new JSpinner(new SpinnerNumberModel(0, 0, 999, 1));
@@ -35,22 +37,26 @@ public class FenC_chambre extends JFrame{
      */
     public FenC_chambre(){
         
-        JPanel panelGeneral = new JPanel(new BorderLayout()); //creation du panel general
+        setIconImage(getToolkit().getImage("img/exec3.png"));
+        
+        JPanel panelGeneral = new JPanel(new BorderLayout(50,50)); //creation du panel general
         JPanel panelHaut = new JPanel(new BorderLayout()); //creation du panel haut
         JPanel panelCentre = new JPanel (new GridBagLayout()); //creation du panel centre
-        GridBagConstraints gbc = new GridBagConstraints(); //creation du constructeur permettant de placer les elements dans la grille de la fenetre
+         //creation du constructeur permettant de placer les elements dans la grille de la fenetre
         JPanel panelBas = new JPanel(new BorderLayout()); //creation du panel bas
-        fieldCleInfirm.setColumns(12);
-        
-        //panel haut
+        fieldCleInfirm.setPreferredSize(new Dimension(100, 20));
+        spinNumChambre.setPreferredSize(new Dimension(100, 20));
+        spinNumLit.setPreferredSize(new Dimension(100, 20));
+        comboCodeServ.setPreferredSize(new Dimension(100, 20));
+//panel haut
 
         panelHaut.add(btnBack,BorderLayout.WEST); //ajout bouton retour au panel du haut
         panelHaut.add(btnAide,BorderLayout.EAST); //ajout bouton aide au panel du haut          
         panelGeneral.add(panelHaut, BorderLayout.NORTH); //ajout du panel haut au panel general
         
-        
+        GridBagConstraints gbc = new GridBagConstraints();
         //panel centre
-        gbc.weightx =0;
+        gbc.weightx =1;
         gbc.weighty = 2;
         
         //label et spinner numero chambre
@@ -112,11 +118,18 @@ public class FenC_chambre extends JFrame{
     
     
     //getteurs des boutons 
-
+    /**
+     * methode permettant de reuperer le bouton retour 
+     * @return 
+     */
     public JButton getBtnBack() {
         return btnBack;
     }
-
+    
+    /**
+     * methode permettant de reuperer le bouton de creation
+     * @return 
+     */
     public JButton getBtnAide() {
         return btnAide;
     }

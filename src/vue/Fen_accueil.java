@@ -1,20 +1,13 @@
 
 package vue;
 
-import vue.service.Fen_service;
-import vue.malade.Fen_malade;
-import vue.employe.Fen_employe;
-import vue.chambre.Fen_chambre;
-import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.BorderLayout;
+import java.awt.Dimension;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JSeparator;
 
-import static vue.employe.Fen_employe.fenCemp;
-import static vue.employe.Fen_employe.fenRUDemp;
-import static vue.employe.Fen_employe.fenRepEmp;
 //import static vue.employe.
 
 
@@ -28,27 +21,57 @@ public class Fen_accueil extends JFrame{
     private final JButton btnMalad = new JButton("Malades");
     private final JButton btnSearch = new JButton("Recherche");
     private final JButton btnServic = new JButton("Services");
-        
-    private Fen_search fenetreR;
+    private final JButton btnPlusConfig = new JButton("Autres configurations"); 
     
-    private Fen_employe fenetreE;
-    private Fen_malade fenetreM;
-    private Fen_service fenetreS;
-    private Fen_chambre fenetreC;
- 
     /**
      * constructeur de la classe
      */
     public Fen_accueil(){
-        
+        setIconImage(getToolkit().getImage("img/exec3.png"));
         //Configuration du panel pour le mode d'affichage des boutons
-        JPanel panelGeneral = new JPanel(new GridLayout(6, 1));
-        panelGeneral.add(btnBack);
-        panelGeneral.add(btnEmploy);
-        panelGeneral.add(btnRoom);
-        panelGeneral.add(btnMalad);
-        panelGeneral.add(btnServic);
-        panelGeneral.add(btnSearch);
+        JPanel panelHaut = new JPanel(new BorderLayout());
+        panelHaut.add(btnBack, BorderLayout.WEST);
+        //panelHaut.add(this)
+        
+        JPanel panelBas = new JPanel(new BorderLayout());
+        panelBas.add(btnPlusConfig, BorderLayout.EAST);
+                
+        JPanel panelSousHaut = new JPanel(new BorderLayout(75,0));
+        panelSousHaut.add(btnEmploy, BorderLayout.WEST);
+        panelSousHaut.add(btnMalad, BorderLayout.EAST);
+        
+        JPanel panelSousCentre = new JPanel(new BorderLayout(130,30));
+        JSeparator separeV = new JSeparator(JSeparator.VERTICAL);
+        separeV.setPreferredSize(new Dimension(0, 80));
+        JSeparator separeH = new JSeparator(JSeparator.HORIZONTAL);
+        separeH.setPreferredSize(new Dimension(0, 80));
+        JSeparator separeV2 = new JSeparator(JSeparator.VERTICAL);
+        separeV.setPreferredSize(new Dimension(30, 0));
+        JSeparator separeH2 = new JSeparator(JSeparator.HORIZONTAL);
+        separeH.setPreferredSize(new Dimension(30, 0));
+        panelSousCentre.add(separeV, BorderLayout.NORTH);
+        panelSousCentre.add(separeH, BorderLayout.SOUTH);
+        panelSousCentre.add(btnSearch, BorderLayout.CENTER);
+        panelSousCentre.add(separeH2, BorderLayout.EAST);
+        panelSousCentre.add(separeV2, BorderLayout.WEST);
+        
+        JPanel panelSousBas = new JPanel(new BorderLayout(75, 0));
+        panelSousBas.add(btnRoom, BorderLayout.WEST);
+        panelSousBas.add(btnServic, BorderLayout.EAST);
+        
+        //JPanel panelCentre = new JPanel(new BorderLayout(80, 80));
+        
+        
+        JPanel panelSousGeneral = new JPanel(new BorderLayout());
+        panelSousGeneral.add(panelSousHaut, BorderLayout.NORTH);
+        panelSousGeneral.add(panelSousCentre, BorderLayout.CENTER);
+        panelSousGeneral.add(panelSousBas, BorderLayout.SOUTH);
+        
+        JPanel panelGeneral = new JPanel(new BorderLayout(0, 20));
+        panelGeneral.add(panelHaut, BorderLayout.NORTH);
+        panelGeneral.add(panelSousGeneral, BorderLayout.CENTER);
+        panelGeneral.add(panelBas, BorderLayout.SOUTH);
+        
         setContentPane(panelGeneral);
         setTitle("Accueil");
         setLocationRelativeTo(null);
@@ -80,7 +103,9 @@ public class Fen_accueil extends JFrame{
     public JButton getBtnServic() {
         return btnServic;
     }
-    
-    
 
+    public JButton getBtnPlusConfig() {
+        return btnPlusConfig;
+    }
+    
 }

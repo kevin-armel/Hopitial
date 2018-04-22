@@ -2,6 +2,7 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Iterator;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.table.DefaultTableModel;
@@ -9,6 +10,16 @@ import static model.Accueil.connex;
 
 
 public class Malade extends Abstract_Personne{
+    
+    private String nom_malade;
+    private String prenom_malade;
+    private String sexe_malade;
+    private String Tel_malade;
+    private String adress_malade;
+    private String mut_malade;
+    private double taille;
+    private double poids;
+    private Date age =new Date();
     
     public DefaultTableModel getModelDataTable(){
         DefaultTableModel modelData = new DefaultTableModel();
@@ -73,6 +84,20 @@ public class Malade extends Abstract_Personne{
             System.out.println(e.getMessage());
         }
         return modelData;
+    }
+    
+    public boolean deletedData(int id){
+        boolean b =false;
+        try {
+            connex.executeUpdate("DELETE FROM soigne WHERE no_malade = "+ id +";");
+            connex.executeUpdate("DELETE FROM hospitalisation WHERE no_malade = "+ id +";");
+            connex.executeUpdate("DELETE FROM malade WHERE numero = "+ id +";");
+            b = true;
+        } catch (Exception e) {
+            b= false;
+            System.out.println(e.getMessage());
+        }
+        return b;
     }
     
 }

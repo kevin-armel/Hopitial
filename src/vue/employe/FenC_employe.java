@@ -3,6 +3,7 @@ package vue.employe;
 
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import javax.swing.JButton;
@@ -16,6 +17,7 @@ import javax.swing.SpinnerNumberModel;
 
 
 public class FenC_employe extends JFrame {
+    
     
     private final JButton btnBack = new JButton("Retour");
     private final JButton btnAide = new JButton("Aide");
@@ -46,18 +48,25 @@ public class FenC_employe extends JFrame {
      * constructeur de la classe
      */
     public FenC_employe(){
+        
+        setIconImage(getToolkit().getImage("img/exec3.png"));
         JPanel panelGeneral = new JPanel(new BorderLayout());
         JPanel panelHaut = new JPanel(new BorderLayout());
         JPanel panelCentre = new JPanel(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
         GridBagConstraints gbc2 = new GridBagConstraints();
         JPanel panelBas = new JPanel(new BorderLayout()); //Création des pannels
-        fieldNom.setColumns(12);
-        fieldPrenom.setColumns(12);
-        fieldTel.setColumns(12);
-        fieldAdresse.setColumns(12);
-        fieldEmail.setColumns(12);
-       
+        fieldNom.setPreferredSize(new Dimension(150, 30));
+        fieldPrenom.setPreferredSize(new Dimension(150, 30));
+        fieldTel.setPreferredSize(new Dimension(150, 30));
+        fieldAdresse.setPreferredSize(new Dimension(150, 30));
+        fieldEmail.setPreferredSize(new Dimension(150, 30));
+        comboTypeEmploye.setPreferredSize(new Dimension(150, 30));
+        comboRotation.setPreferredSize(new Dimension(150, 30));
+        comboSexe.setPreferredSize(new Dimension(150, 30));
+        combodSpecia.setPreferredSize(new Dimension(150, 30));
+        comboCodeServ.setPreferredSize(new Dimension(150, 30));
+        spinSalaire.setPreferredSize(new Dimension(150, 30));
         
         comboTypeEmploye.addItem("");
         comboTypeEmploye.addItem("Docteur");
@@ -79,7 +88,7 @@ public class FenC_employe extends JFrame {
         gbc.gridy=0;
         gbc.gridwidth=1;
         gbc.gridheight=1;       
-        panelCentre.add(new JLabel("Proffession "), gbc);
+        panelCentre.add(new JLabel("Profession "), gbc);
         gbc.gridx=1;
         gbc.gridwidth=GridBagConstraints.REMAINDER;
         panelCentre.add(comboTypeEmploye, gbc); // Ligne 1 du pannel central

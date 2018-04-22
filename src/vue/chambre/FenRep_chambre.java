@@ -14,6 +14,7 @@ public class FenRep_chambre extends JFrame{
      * constructeur de la classe
      */
     public FenRep_chambre(){
+        setIconImage(getToolkit().getImage("img/exec3.png"));
         JPanel panelGeneral = new JPanel(new GridLayout(2, 1));
         panelGeneral.add(btnBack);
         panelGeneral.add(new JButton("Vous changer Ce contenu ci."));

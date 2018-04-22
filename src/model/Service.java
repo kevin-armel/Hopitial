@@ -60,4 +60,18 @@ public class Service {
         return modelData;
     }
     
+    public boolean deletedData(String code){
+        boolean b = false;
+        try {
+            connex.executeUpdate("DELETE FROM service WHERE no_malade = '"+ code +"';");
+            connex.executeUpdate("DELETE FROM hospitalisation WHERE code_service = '"+ code +"';");
+            connex.executeUpdate("DELETE FROM chambre WHERE code_service = '"+ code +"';");
+            b = true;
+        } catch (Exception e) {
+            b = false;
+            System.out.println(e.getMessage());
+        }
+        return b;
+    }
+    
 }

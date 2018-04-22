@@ -2,8 +2,12 @@
 package vue;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
@@ -11,6 +15,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+import javax.swing.border.Border;
 
 
 public class Fen_connexion extends JFrame{
@@ -23,8 +28,8 @@ public class Fen_connexion extends JFrame{
     private final JPasswordField fieldBDDPass = new JPasswordField();
     private final JCheckBox checkOption = new JCheckBox("Cocher pour Plus d'option d'authentification");
     private final JCheckBox checkDistant = new JCheckBox("Cocher pour se connecter sur le serveur distant");
-    private final JLabel labelIcon = new JLabel("Ici l'Icone");
-    private final JLabel labelTextHaut = new JLabel("Ici texte en haut");
+    private final JLabel labelIcon = new JLabel("");
+    private final JLabel labelTextHaut = new JLabel("Bienvenue dans votre application de gestion du personnel de l'hopital");
     private final JLabel labelNom = new JLabel("Nom utilisateur: ");
     private final JLabel labelPass = new JLabel("Mots de passe: ");
     private final JLabel labelBDD = new JLabel("Nom de la base de donées: ");
@@ -45,6 +50,10 @@ public class Fen_connexion extends JFrame{
         fieldBDDPass.setVisible(false);
         checkDistant.setVisible(false);
         
+        setIconImage(getToolkit().getImage("img/exec3.png"));
+        labelIcon.setIcon(new ImageIcon("img/exec3.png"));
+        labelTextHaut.setFont(new Font("verdana", 12, 11));
+        labelTextHaut.setForeground(Color.BLUE);
         JPanel panCentral = new JPanel(new GridBagLayout());
         GridBagConstraints gbcLayout = new GridBagConstraints();
         gbcLayout.weightx = 0;
@@ -127,7 +136,7 @@ public class Fen_connexion extends JFrame{
         
         setContentPane(panelGeneral);
         setTitle("Connexion au serveur");
-        //setVisible(true);
+        setMaximumSize(new Dimension(300, 300));
         pack();
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

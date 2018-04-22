@@ -125,15 +125,14 @@ public class EmployeRUD_controller implements ActionListener, ListSelectionListe
             fenRUD_employe.getFieldPrenom().setText(modelEmploye.getModelDataTable().getValueAt(posi, 2).toString());
             fenRUD_employe.getFieldAdresse().setText(modelEmploye.getModelDataTable().getValueAt(posi, 3).toString());
             fenRUD_employe.getFieldTel().setText(modelEmploye.getModelDataTable().getValueAt(posi, 4).toString());
-            //fenRUD_employe.getComboSexe()
-            //fenRUD_employe.getFieldAge()
-            //fenRUD_employe.getFieldEmail().setText(modelEmploye.getModelDataTable().getValueAt(i, 4).toString()); // POur l'email
+            fenRUD_employe.getComboSexe().setSelectedItem(modelEmploye.getModelDataTable().getValueAt(posi, 5));
+            fenRUD_employe.getFieldEmail().setText(modelEmploye.getModelDataTable().getValueAt(posi, 6).toString()); // POur l'email
             if(isDoctor){
-                fenRUD_employe.getComboDSpecialite().setSelectedItem(modelEmploye.getModelDataTable().getValueAt(posi, 5));
+                fenRUD_employe.getComboDSpecialite().setSelectedItem(modelEmploye.getModelDataTable().getValueAt(posi, 7));
             } else {
-                fenRUD_employe.getFieldCodeS().setText(modelEmploye.getModelDataTable().getValueAt(posi, 6).toString());
-                fenRUD_employe.getSpinSalaire().setValue(Integer.parseInt(modelEmploye.getModelDataTable().getValueAt(posi, 8).toString()));
-                fenRUD_employe.getComboInfRot().setSelectedItem(modelEmploye.getModelDataTable().getValueAt(posi, 7));
+                fenRUD_employe.getFieldCodeS().setText(modelEmploye.getModelDataTable().getValueAt(posi, 8).toString());
+                fenRUD_employe.getSpinSalaire().setValue(Integer.parseInt(modelEmploye.getModelDataTable().getValueAt(posi, 10).toString()));
+                fenRUD_employe.getComboInfRot().setSelectedItem(modelEmploye.getModelDataTable().getValueAt(posi, 9));
             }
         } catch (Exception e) {
         }
@@ -226,7 +225,12 @@ public class EmployeRUD_controller implements ActionListener, ListSelectionListe
         else if(ae.getSource().equals(fenRUD_employe.getBtnSupression())){
             int i = fenRUD_employe.getTableDonnees().getSelectedRow();
             if(i>=0){
-                
+                int numero = Integer.parseInt(fenRUD_employe.getTableDonnees().getValueAt(i, 0).toString());
+                if(modelEmploye.isDocteur(i)){
+                    if(modelEmploye.deletedData(numero, true))
+                        JOptionPane.showMessageDialog(fenRUD_employe, "La supression de l'employé s'est effectuée avec succès.", "Supression d'employé", JOptionPane.INFORMATION_MESSAGE);
+                }else
+                    modelEmploye.deletedData(numero, false);
             }else
                 JOptionPane.showMessageDialog(fenRUD_employe, "Impossible de suprimer, aucune donnée n'est sélectionée.", "Supression de données", JOptionPane.OK_OPTION);
         }

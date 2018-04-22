@@ -37,6 +37,8 @@ public class FenC_malade extends JFrame{
      * constructeur de la classe
      */
     public FenC_malade(){
+        
+        setIconImage(getToolkit().getImage("img/exec3.png"));
         JPanel panelGeneral = new JPanel(new BorderLayout(30,30)); //creation du panel general
         JPanel panelHaut = new JPanel(new BorderLayout()); //creation du panel haut
         JPanel panelCentre = new JPanel (new GridBagLayout()); //creation du panel centre

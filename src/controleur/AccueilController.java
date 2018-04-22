@@ -7,6 +7,8 @@ import controleur.malade.MaladeController;
 import controleur.service.ServiceController;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import javax.swing.JOptionPane;
 import model.Accueil;
 import model.Chambre;
@@ -19,7 +21,7 @@ import vue.Fen_connexion;
 
 
 
-public class AccueilController implements ActionListener, AccueilInterface {
+public class AccueilController implements ActionListener, AccueilInterface, KeyListener {
     public static Boolean isConnected = false;
     private final Fen_accueil fen_accueil = new Fen_accueil();
     private final Fen_connexion fen_connexion = new Fen_connexion();
@@ -43,6 +45,10 @@ public class AccueilController implements ActionListener, AccueilInterface {
     
     private void activerListener(){
         fen_connexion.getBtnConnexion().addActionListener(this);
+        /*fen_connexion.getFieldBDD().addKeyListener(this);
+        fen_connexion.getFieldBDDPass().addKeyListener(this);
+        fen_connexion.getFieldLogin().addKeyListener(this);
+        fen_connexion.getFieldPass().addKeyListener(this);*/
         fen_connexion.getCheckOption().addActionListener(this);
         fen_connexion.getBtnAnnuler().addActionListener(this);
         fen_accueil.getBtnBack().addActionListener(this);
@@ -169,6 +175,23 @@ public class AccueilController implements ActionListener, AccueilInterface {
             Service s = new Service();
             ServiceController sc = new ServiceController(s);
         }
+    }
+
+    @Override
+    public void keyTyped(KeyEvent ke) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void keyPressed(KeyEvent ke) {
+        /*if((ke.getSource().equals(fen_connexion.getFieldLogin()) || (ke.getSource().equals(fen_connexion.getFieldPass())) || (ke.getSource().equals(fen_connexion.getFieldBDD())) ||(ke.getSource().equals(fen_connexion.getFieldBDDPass())))){
+            System.out.println("entrer");
+        }*/
+    }
+
+    @Override
+    public void keyReleased(KeyEvent ke) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

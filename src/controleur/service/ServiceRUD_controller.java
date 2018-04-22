@@ -90,7 +90,13 @@ public class ServiceRUD_controller implements ActionListener, ServiceRUD_Interfa
             //
         }
         else if(ae.getSource().equals(fenRUD_service.getBtnSupression())){
-            //
+            int i = fenRUD_service.getTableDonnees().getSelectedRow();
+            if(i>=0){
+                String code = fenRUD_service.getTableDonnees().getValueAt(i, 0).toString();
+                if(modelService.deletedData(code))
+                    JOptionPane.showMessageDialog(fenRUD_service, "La supression du service s'est effectuée avec succès.", "Supression de chambre", JOptionPane.INFORMATION_MESSAGE);
+            }else
+                JOptionPane.showMessageDialog(fenRUD_service, "Impossible de suprimer, aucune donnée n'est sélectionée.", "Supression", JOptionPane.OK_OPTION);
         }
         else if(ae.getSource().equals(fenRUD_service.getBtnModifier())){
             int i = fenRUD_service.getTableDonnees().getSelectedRow();

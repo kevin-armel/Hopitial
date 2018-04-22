@@ -22,7 +22,7 @@ public class FenRep_service extends JFrame{
         setLocationRelativeTo(null);
         pack();
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        
+        setIconImage(getToolkit().getImage("img/exec3.png"));
         
     }
 

@@ -9,10 +9,14 @@ import model.Employe;
 import vue.employe.FenC_employe;
 
 
-public class EmployeC_controller implements ActionListener, EmployeC_Interface {
+public class EmployeC_controller implements ActionListener, EmployeInterface{
     private Employe modelEmploye = new Employe();
     private final FenC_employe fenC_employe = new FenC_employe();
 
+    /**
+     * Constructeur par defaut, avec parametre 
+     * @param e Passage en paramètre du modele qui sera utilisé
+     */
     public EmployeC_controller(Employe e) {
         this.modelEmploye = e;
         
@@ -33,6 +37,10 @@ public class EmployeC_controller implements ActionListener, EmployeC_Interface {
         fenC_employe.repaint();
     }
 
+    /**
+     * méthode implémentée
+     * @param e implementée
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource().equals(fenC_employe.getBtnBack())){
@@ -59,13 +67,22 @@ public class EmployeC_controller implements ActionListener, EmployeC_Interface {
             viderChamps();
             fenC_employe.repaint();
         }else if(e.getSource() == fenC_employe.getbtnAide()){  
-            JOptionPane.showMessageDialog(null, "Débrouille toi !", "Aide création service ", JOptionPane.PLAIN_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Rempir les champs indiqués puis cliquer sur valider.", "Aide création service ", JOptionPane.PLAIN_MESSAGE);
         }else if(e.getSource() == fenC_employe.getbtnValider()){
-            JOptionPane.showMessageDialog(null, "valider !", "valider ", JOptionPane.PLAIN_MESSAGE);
+            String s1 = fenC_employe.getFieldNom().getText();
+            String s2 = fenC_employe.getFieldPrenom().getText();
+            String s3 = fenC_employe.getFieldAdresse().getText();
+            String s4 = fenC_employe.getFieldTel().getText();
+            String s5 = fenC_employe.getFieldEmail().getText();
+            String s6 = fenC_employe.getComboSexe().getSelectedItem().toString();
+            if(modelEmploye.insertData(modelEmploye.lastNumPerson(), s1, s2,s3,s4,s6, s5))
+            JOptionPane.showMessageDialog(fenC_employe, "L'ajout de l'employe s'est effectué avec succès.", "Ajout de chambre", JOptionPane.INFORMATION_MESSAGE);
         }
     }
-    
-    @Override
+        
+  
+ 
+     
     public void noAction(boolean disable){
         if(disable){
             fenC_employe.getBtnValider().setEnabled(false);
@@ -88,7 +105,7 @@ public class EmployeC_controller implements ActionListener, EmployeC_Interface {
         }
     }
     
-    @Override
+
     public void afficheChampsDoc(){
         fenC_employe.getlabSpecialite().setVisible(true);
         fenC_employe.getCombodSpecia().setVisible(true);
@@ -101,7 +118,7 @@ public class EmployeC_controller implements ActionListener, EmployeC_Interface {
         
     }
     
-    @Override
+
     public void afficheChampsInf(){
         fenC_employe.getlabRotation().setVisible(true);
         fenC_employe.getComboRotation().setVisible(true);
@@ -125,7 +142,7 @@ public class EmployeC_controller implements ActionListener, EmployeC_Interface {
         fenC_employe.getComboCodeServ().setVisible(false);
     }
     
-    @Override
+
     public void viderChamps(){
         fenC_employe.getFieldNom().setText("");
         fenC_employe.getFieldPrenom().setText("");

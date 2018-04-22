@@ -2,17 +2,19 @@
 package controleur.chambre;
 
 import controleur.MetaDataController;
+import controleur.SearchController;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import model.Chambre;
 import model.MetaDataModel;
+import model.Recherche;
 import vue.chambre.FenRUD_chambre;
 
 public class ChambreRUD_controller implements ActionListener, ChambreRUD_Interface{
     
-    
+    //déclaration des variables 
     private Chambre modelChambre = new Chambre();
     private final FenRUD_chambre fenRUD_chambre = new FenRUD_chambre();
 
@@ -22,6 +24,7 @@ public class ChambreRUD_controller implements ActionListener, ChambreRUD_Interfa
         fenRUD_chambre.getComboCodeServ().setModel(c.getModelCodeServ());
         setCellReadOnly(fenRUD_chambre.getTableDonnees());
         
+        //mise sur écoute des boutons 
         fenRUD_chambre.getBtnBack().addActionListener(this);
         fenRUD_chambre.getBtnAide().addActionListener(this);
         fenRUD_chambre.getBtnCleSurveil().addActionListener(this);
@@ -44,7 +47,9 @@ public class ChambreRUD_controller implements ActionListener, ChambreRUD_Interfa
             table.setDefaultEditor(col_class, null);
         }
     }  
-
+        /**
+         * methode de blindage, empeche à l'utilisateur d'apporter toutes modifications tant que les modifications ne sont pas activées
+         */
         @Override
     public void desactiveModif(){
         fenRUD_chambre.getSpinNbrLits().setEnabled(false);
@@ -73,8 +78,7 @@ public class ChambreRUD_controller implements ActionListener, ChambreRUD_Interfa
             fenRUD_chambre.getSpinNumChambree().setValue(Integer.parseInt(modelChambre.getModelDataTable().getValueAt(posi, 0).toString()));
             fenRUD_chambre.getSpinNbrLits().setValue(Integer.parseInt(modelChambre.getModelDataTable().getValueAt(posi, 1).toString()));
             fenRUD_chambre.getComboCodeServ().setSelectedItem(modelChambre.getModelDataTable().getValueAt(posi, 2).toString());
-            //fenRUD_chambre.getFieldCleServic().setText(modelChambre.getModelDataTable().getValueAt(posi, 3).toString());
-            //fenRUD_chambre.getFieldEmail().setText(modelChambre.getModelDataTable().getValueAt(i, 4).toString()); // POur l'email*/
+            
 
         } catch (Exception e) {
         }
@@ -98,6 +102,10 @@ public class ChambreRUD_controller implements ActionListener, ChambreRUD_Interfa
         else if(ae.getSource().equals(fenRUD_chambre.getBtnAide())){
             //aide
         }
+        else if(ae.getSource().equals(fenRUD_chambre.getBtnRecherche())){
+            Recherche r = new Recherche();
+            SearchController sc = new SearchController(r);
+        }
         else if(ae.getSource().equals(fenRUD_chambre.getBtnRaz())){
             //videz champs
             videzChamp();
@@ -105,6 +113,16 @@ public class ChambreRUD_controller implements ActionListener, ChambreRUD_Interfa
         else if(ae.getSource().equals(fenRUD_chambre.getBtnCleSurveil())){
             MetaDataModel mdm = new MetaDataModel();
             MetaDataController mdc = new MetaDataController(mdm, 2);
+        }
+        else if(ae.getSource().equals(fenRUD_chambre.getBtnSupression())){
+            int i = fenRUD_chambre.getTableDonnees().getSelectedRow();
+            if(i>=0){
+                int numero = Integer.parseInt(fenRUD_chambre.getTableDonnees().getValueAt(i, 0).toString());
+                String code = modelChambre.getModelDataTable().getValueAt(i, 2).toString();
+                if(modelChambre.deletedData(numero, code))
+                    JOptionPane.showMessageDialog(fenRUD_chambre, "La supression de la chambre s'est effectuée avec succès.", "Supression de chambre", JOptionPane.INFORMATION_MESSAGE);
+            }else
+                JOptionPane.showMessageDialog(fenRUD_chambre, "Impossible de suprimer, aucune donnée n'est sélectionée.", "Supression de données", JOptionPane.OK_OPTION);
         }
         else if(ae.getSource().equals(fenRUD_chambre.getBtnModifier())){
             int i = fenRUD_chambre.getTableDonnees().getSelectedRow();

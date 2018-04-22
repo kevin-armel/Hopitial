@@ -60,6 +60,34 @@ public class Chambre {
         return modelData;
     }
     
+    public boolean deletedData(int numChambre, String codeServ){
+        boolean b =false;
+        try {
+            connex.executeUpdate("DELETE FROM chambre WHERE code_service = '"+ codeServ +"' AND no_chambre = "+ numChambre +";");
+            connex.executeUpdate("DELETE FROM hospitalisation WHERE code_service = '"+ codeServ +"' AND no_chambre = "+ numChambre +";");
+            b = true;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            b =false;
+        }
+        
+        return b;
+    }
+    
+    public boolean insertData(int numChambre, String codeServ, int numSurv, int nbrLits){
+        boolean b =false;
+        System.out.println(numChambre);System.out.println(codeServ);System.out.println(nbrLits);
+        try {
+            connex.executeUpdate("INSERT INTO chambre (code_service, no_chambre, surveillant, nb_lits) VALUES ( '"+codeServ+"',"+numChambre+", "+numSurv+", "+nbrLits+");");
+            b = true;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            b =false;
+        }
+        
+        return b;
+    }
+    
     public DefaultComboBoxModel getModelCodeServ(){
         DefaultComboBoxModel modelData = new DefaultComboBoxModel();
         try {

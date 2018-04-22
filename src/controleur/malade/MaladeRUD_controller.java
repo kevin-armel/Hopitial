@@ -139,12 +139,14 @@ public class MaladeRUD_controller implements ActionListener, MaladeRUD_Interface
                 JOptionPane.showMessageDialog(fenRUD_malade, "Impossible de modifier, aucune donnée n'est sélectionée.", "Modification", JOptionPane.OK_OPTION);
         }
         else if(ae.getSource().equals(fenRUD_malade.getBtnReporting())){
-            //
+            MaladeRep_controller mRc = new MaladeRep_controller(modelMalade);
         }
         else if(ae.getSource().equals(fenRUD_malade.getBtnSupression())){
             int i = fenRUD_malade.getTableDonnees().getSelectedRow();
             if(i>=0){
-                //
+                int numero = Integer.parseInt(fenRUD_malade.getTableDonnees().getValueAt(i, 0).toString());
+                if(modelMalade.deletedData(numero))
+                    JOptionPane.showMessageDialog(fenRUD_malade, "La supression du malade s'est effectuée avec succès.", "Supression de chambre", JOptionPane.INFORMATION_MESSAGE);
             }else
                 JOptionPane.showMessageDialog(fenRUD_malade, "Impossible de suprimer, aucune donnée n'est sélectionée.", "Supression", JOptionPane.OK_OPTION);
         }

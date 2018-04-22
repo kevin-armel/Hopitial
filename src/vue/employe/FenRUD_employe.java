@@ -66,6 +66,7 @@ public class FenRUD_employe  extends JFrame{
      * constructeur de la classe
      */
     public FenRUD_employe(){
+        setIconImage(getToolkit().getImage("img/exec3.png"));
         
         fieldNom.setColumns(12);;
         fieldNom.setEnabled(false);
@@ -90,7 +91,7 @@ public class FenRUD_employe  extends JFrame{
         btnModifier.setEnabled(false);
         btnUpdate.setEnabled(false);
         
-        JPanel panelHaut = new JPanel(new BorderLayout(30, 30));
+        JPanel panelHaut = new JPanel(new BorderLayout(400, 30));
         panelHaut.add(btnBack, BorderLayout.WEST);
         panelHaut.add(btnRecherche, BorderLayout.CENTER);
         panelHaut.add(btnAide, BorderLayout.EAST);
@@ -251,7 +252,7 @@ public class FenRUD_employe  extends JFrame{
         gbcLayout.gridheight = 1;
         pan_1.add(panelTempo, gbcLayout); // je l'ajoute à cette position de départ
         
-        JPanel panelBtn = new JPanel(new BorderLayout(80, 30));
+        JPanel panelBtn = new JPanel(new BorderLayout(400, 30));
         JSeparator separe2 = new JSeparator(JSeparator.HORIZONTAL);
         separe2.setPreferredSize(new Dimension(50, 0));
         panelBtn.add(btnSupression, BorderLayout.CENTER);

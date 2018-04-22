@@ -18,6 +18,7 @@ public class FenRep_employe extends JFrame{
         panelGeneral.add(new JButton("Vous changer Ce contenu ci."));
         setContentPane(panelGeneral);
         setTitle("Reporting employe");
+        setIconImage(getToolkit().getImage("img/exec3.png"));
         setLocationRelativeTo(null);
         pack();
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

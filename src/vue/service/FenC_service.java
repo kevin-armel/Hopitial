@@ -25,6 +25,8 @@ public class FenC_service extends JFrame {
      * constructeur de la classe
      */
     public FenC_service(){
+        
+        setIconImage(getToolkit().getImage("img/exec3.png"));
         JPanel panelGeneral = new JPanel(new BorderLayout());
         JPanel panelHaut = new JPanel(new BorderLayout());
         JPanel panelCentre = new JPanel(new GridBagLayout());

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import static model.Accueil.connex;
 
@@ -50,6 +51,54 @@ public class Employe extends Abstract_Personne implements InterfaceEmploye{
         return b;
     }
     
+    public boolean deletedData(int id, boolean isDoc){
+        boolean b = false;
+        try {
+            connex.executeUpdate("DELETE FROM employe WHERE numero = "+ id +";");
+            if(isDoc){
+                connex.executeUpdate("DELETE FROM docteur WHERE numero = "+ id +";");
+                connex.executeUpdate("DELETE FROM soigne WHERE no_docteur = "+ id +";");
+                b = true;
+            }else{
+                connex.executeUpdate("DELETE FROM infirmier WHERE numero = "+ id +";");
+                b = true;
+            }
+        } catch (Exception e) {
+            b =false;
+            System.out.println(e.getMessage());
+        }
+        return b;
+    }
+    
+    public boolean insertData(int numero, String nom, String prenom, String adresse, String tel, String sexe, String email){
+        boolean b =false;
+        try {
+            connex.executeUpdate("INSERT INTO chambre (numero, nom, prenom, adresse, tel, sexe, email) VALUES ( "+numero+", '"+nom+"', '"+prenom+"', '"+adresse+"', '"+tel+"', '"+sexe+"', '"+email+"');");
+            b = true;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            b =false;
+        }
+        
+        return b;
+    }
+    
+    public int lastNumPerson() {
+        //Test de connexion a la base de donnees
+        try {
+            ArrayList<String> liste = new ArrayList<String>();
+            liste = connex.remplirChampsRequete("SELECT numero FROM employe ORDER BY numero DESC;");
+            String res = new String();
+            res = liste.get(0).replace("\n", "");
+            connex.deconectBDD();
+            return Integer.parseInt(res);
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Impossible d'ajouter d'obtenir la liste \n\n"+ e.getMessage(), "Erreur de lecture", JOptionPane.ERROR);
+            return 0;
+        }
+    }
+    
     public boolean isDocteur(int numEmploye){
         boolean b = false;
         try {
@@ -74,6 +123,8 @@ public class Employe extends Abstract_Personne implements InterfaceEmploye{
         modelData.addColumn("Prenom");
         modelData.addColumn("Adresse");
         modelData.addColumn("Teléphone");
+        modelData.addColumn("Sexe");
+        modelData.addColumn("Email");
         modelData.addColumn("Spécialité Docteur");
         modelData.addColumn("Code service Infirmier");
         modelData.addColumn("Rotation Infirmier");
@@ -82,7 +133,7 @@ public class Employe extends Abstract_Personne implements InterfaceEmploye{
         try {
             ArrayList<String> liste = new ArrayList<String>();
             //J'effectue une jointure pour avoir les informations des employe tous confondus.
-            liste = connex.remplirChampsRequete("SELECT employe.numero, employe.nom, employe.prenom, employe.adresse, employe.tel, docteur.specialite, infirmier.code_service, infirmier.rotation, infirmier.salaire FROM employe LEFT JOIN infirmier ON employe.numero = infirmier.numero LEFT JOIN docteur ON employe.numero = docteur.numero;");
+            liste = connex.remplirChampsRequete("SELECT employe.numero, employe.nom, employe.prenom, employe.adresse, employe.tel, employe.sexe, employe.email, docteur.specialite, infirmier.code_service, infirmier.rotation, infirmier.salaire FROM employe LEFT JOIN infirmier ON employe.numero = infirmier.numero LEFT JOIN docteur ON employe.numero = docteur.numero;");
             Iterator iter = liste.iterator();
             
             while(iter.hasNext()){

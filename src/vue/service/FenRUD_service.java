@@ -60,9 +60,11 @@ public class FenRUD_service extends JFrame{
         comboBatiment.setEnabled(false);
         btnCleDocteur.setEnabled(false);
         
+        
+        setIconImage(getToolkit().getImage("img/exec3.png"));
         tableDonnees.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         
-        JPanel panelHaut = new JPanel(new BorderLayout(30, 30));
+        JPanel panelHaut = new JPanel(new BorderLayout(400, 30));
         panelHaut.add(btnBack, BorderLayout.WEST);
         panelHaut.add(btnRecherche, BorderLayout.CENTER);
         panelHaut.add(btnAide, BorderLayout.EAST);
@@ -154,7 +156,7 @@ public class FenRUD_service extends JFrame{
         gbcLayout.gridheight = 1;
         pan_1.add(panelTempo, gbcLayout); // je l'ajoute à cette position de départ
         
-        JPanel panelBtn = new JPanel(new BorderLayout(80, 30));
+        JPanel panelBtn = new JPanel(new BorderLayout(400, 30));
         JSeparator separe2 = new JSeparator(JSeparator.HORIZONTAL);
         separe2.setPreferredSize(new Dimension(50, 0));
         panelBtn.add(btnSupression, BorderLayout.CENTER);
