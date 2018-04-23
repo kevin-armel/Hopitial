@@ -70,11 +70,15 @@ public class Employe extends Abstract_Personne implements InterfaceEmploye{
         return b;
     }
     
-    public boolean insertData(int numero, String nom, String prenom, String adresse, String tel, String sexe, String email){
+    public boolean insertData(int numero, String nom, String prenom, String adresse, String tel, String sexe, String email, String type){
         boolean b =false;
         try {
-            connex.executeUpdate("INSERT INTO chambre (numero, nom, prenom, adresse, tel, sexe, email) VALUES ( "+numero+", '"+nom+"', '"+prenom+"', '"+adresse+"', '"+tel+"', '"+sexe+"', '"+email+"');");
-            b = true;
+            connex.executeUpdate("INSERT INTO employe (numero, nom, prenom, adresse, tel, sexe, email) VALUES ( "+numero+", '"+nom+"', '"+prenom+"', '"+adresse+"', '"+tel+"', '"+sexe+"', '"+email+"');");
+            if(type == "Docteur"){
+                //connex.executeUpdate("INSERT INTO docteur (numero, nom, prenom, adresse, tel, sexe, email) VALUES ( "+numero+", '"+nom+"', '"+prenom+"', '"+adresse+"', '"+tel+"', '"+sexe+"', '"+email+"');");
+            }else if(type == "Infirmier"){
+                //connex.executeUpdate("INSERT INTO docteur (numero, nom, prenom, adresse, tel, sexe, email) VALUES ( "+numero+", '"+nom+"', '"+prenom+"', '"+adresse+"', '"+tel+"', '"+sexe+"', '"+email+"');");
+            }b = true;
         } catch (Exception e) {
             System.out.println(e.getMessage());
             b =false;
